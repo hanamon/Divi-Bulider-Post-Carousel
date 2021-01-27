@@ -1,0 +1,23 @@
+.et_pb_fh_post_carousel .owl-carousel .et_pb_fh_carousel_item { border-style:solid; }
+.et_pb_fh_post_carousel_no_arrows .owl-nav, .et_pb_fh_post_carousel_no_pagination .owl-dots { display: none !important; }
+.et_pb_fh_post_carousel .owl-carousel .owl-nav button { position: absolute; z-index: 100; top: 50%; margin-top: -24px; color: #000; font-size: 48px; -webkit-transition: all .2s ease-in-out; -moz-transition: all .2s ease-in-out; transition: all .2s ease-in-out; }
+.et_pb_fh_post_carousel .owl-carousel .owl-nav button:before { text-shadow: 0 0; font-family: ETmodules!important; font-weight: 400; font-style: normal; font-variant: normal; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; line-height: 1; text-transform: none; speak: none; }
+.et_pb_fh_post_carousel .owl-carousel .owl-nav button.owl-prev:before { content: "\34"; }
+.et_pb_fh_post_carousel .owl-carousel .owl-nav button.owl-prev { left:-60px; }
+.et_pb_fh_post_carousel .owl-carousel .owl-nav button.owl-next { right:-60px; }
+.et_pb_fh_post_carousel .owl-carousel .owl-nav button.owl-next:before { content: "\35"; }
+.et_pb_fh_post_carousel .owl-carousel .owl-dots { text-align: center; padding: 10px 0; }
+.et_pb_fh_post_carousel .owl-carousel .owl-dots button { display: inline-block; width: 7px; height: 7px; margin-right: 10px; padding: 0; -webkit-border-radius: 7px; border-radius: 7px; background-color: rgba(0,0,0,.5); text-indent: -9999px; }
+.et_pb_fh_post_carousel .owl-carousel .owl-dots button.active { background-color: #000; }
+.et_pb_fh_post_carousel_content .post-meta { font-size: 13px; }
+.et_pb_fh_post_carousel_description { min-height:100px; }
+.et_pb_fh_post_carousel_description p { padding-bottom:0; }
+.et_pb_fh_post_carousel_description .et_pb_fh_post_carousel_title { padding:10px 0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+@media only screen and (max-width:767px) {
+    .et_pb_fh_post_carousel .owl-carousel .owl-nav button.owl-prev {
+        left: -48px;
+    }
+    .et_pb_fh_post_carousel .owl-carousel .owl-nav button.owl-next {
+        right: -48px;
+    }
+}
