@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 	class ET_Builder_Module_FH_Divi_Post_Carousel extends ET_Builder_Module_Type_PostBased {
 		function init() {

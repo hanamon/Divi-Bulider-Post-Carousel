@@ -1,6 +1,6 @@
-=== Post Carousel for DV Builder ===
-Contributors:       vaidfaiyaz
-Donate link:        https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9H785QGQ4WFJ8&source=url
+=== Post Carousel for DV Builder  ===
+Contributors:       Hanamon
+Donate link:        -
 Tags: 				carousel, divi carousel, divi theme, divi plugins, post carousel for divi
 Requires at least: 	4.5
 Tested up to: 		5.6
@@ -10,10 +10,12 @@ License:            GPLv2 or later
 License URI: 		http://www.gnu.org/licenses/gpl-2.0.html
 
 Post carousel for Divi builder with the support of custom post types and various carousel options.
+커스텀 포스트 유형 및 다양한 캐러셀 옵션을 지원하는 Divi 빌더용 포스트 캐러셀.
 
 == Description ==
 
 Post Carousel for Divi is fully compatible with Divi theme only. It is a very useful plugin to show your posts or custom post in a awesome sliding manner. It has various options so that you can customize it in your own way.
+Divi 빌더용 Post Carousel은 Divi 테마와만 완전히 호환됩니다. 멋진 슬라이딩 방식으로 게시물 또는 사용자 지정 게시물을 표시하는 매우 유용한 플러그인입니다. 다양한 옵션이 있으므로 원하는대로 사용자 지정할 수 있습니다.
 
 **Features**
 
