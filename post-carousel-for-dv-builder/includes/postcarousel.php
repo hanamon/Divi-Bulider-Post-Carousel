@@ -2,58 +2,49 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
-	class ET_Builder_Module_FH_Divi_Post_Carousel extends ET_Builder_Module_Type_PostBased {
-		function init() {
-			$this->name       = esc_html__( 'Post Carousel', 'et_builder' );
-			$this->plural     = esc_html__( 'Post Carousels', 'et_builder' );
-			$this->slug       = 'et_pb_fh_post_carousel';
-			$this->vb_support = 'on';
+if( !class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
+	
+	class ET_Builder_Module_HM_Divi_Post_Carousel extends ET_Builder_Module_Type_PostBased {
+		
+		// $slug : 모듈 숏코드 슬러그
+		public $slug = 'et_pb_hm_post_carousel';
+		
+		// $vb_support : 호환성 선언
+		public $vb_support = 'on';
+		
+		// init() : 초기화
+		public function init() {			
+			// $name : 모듈 이름
+			$this->name = '(하)게시물 캐러셀';
 
-			// need to use global settings from the carousel module
-			$this->global_settings_slug = 'et_pb_fh_post_carousel';
-
-			$this->main_css_element = '%%order_class%%.et_pb_fh_post_carousel';
-
-			$this->settings_modal_toggles = array(
+			// $settings_modal_toggles : 모듈 설정(토글) 그룹 이름
+			$this->settings_modal_toggles = array(				
+				// 모듈 > 컨텐츠 설정 그룹
 				'general'  => array(
 					'toggles' => array(
-						'main_content'   => esc_html__( 'Content', 'et_builder' ),
-						'post_background'   => esc_html__( 'Post Background', 'et_builder' ),
-						'elements'       => esc_html__( 'Elements', 'et_builder' ),
-						'featured_image' => esc_html__( 'Featured Image', 'et_builder' ),
+						'main_content'		=> '(하)컨텐츠',				
+						'elements'			=> '(하)요소',
+						'featured_image'	=> '(하)대표 이미지',
+						'post_background'	=> '(하)게시물 배경',					
 					),
 				),
+				
+				// 모듈 > 디자인 설정 그룹
 				'advanced' => array(
 					'toggles' => array(
-						'layout'     => esc_html__( 'Layout', 'et_builder' ),
-						'carousel'    => esc_html__( 'Carousel', 'et_builder' ),
-						'navigation' => esc_html__( 'Navigation', 'et_builder' ),
-						'image' => array(
-							'title' => esc_html__( 'Image', 'et_builder' ),
-						),
-						'text'       => array(
-							'title'    => esc_html__( 'Text', 'et_builder' ),
-							'priority' => 49,
-						),
-					),
-				),
-				'custom_css' => array(
-					'toggles' => array(
-						'animation' => array(
-							'title'    => esc_html__( 'Animation', 'et_builder' ),
-							'priority' => 90,
-						),
+						'carousel'	 => '(하)캐러셀',
+						'navigation' => '(하)네비게이션',
 					),
 				),
 			);
 
+			// $advanced_fields : 모듈 디자인 설정 그룹의 필드 구성
 			$this->advanced_fields = array(
-				'fonts'                 => array(
+				'fonts'				=> array(
 					'header' => array(
-						'label'    => esc_html__( 'Title', 'et_builder' ),
+						'label'    => '(하)제목',
 						'css'      => array(
-							'main' => "{$this->main_css_element} .et_pb_fh_post_carousel_description .et_pb_fh_post_carousel_title, {$this->main_css_element} .et_pb_fh_post_carousel_description .et_pb_fh_post_carousel_title a",
+							'main' => "{$this->main_css_element} .et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_title, {$this->main_css_element} .et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_title a",
 							'important' => array( 'size', 'font-size', 'plugin_all' ),
 						),
 						'header_level' => array(
@@ -61,18 +52,18 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 						),
 					),
 					'body'   => array(
-						'label'    => esc_html__( 'Body', 'et_builder' ),
+						'label'    => '(하)본문',
 						'css'      => array(
-							'line_height' => "{$this->main_css_element}, {$this->main_css_element} .et_pb_fh_post_carousel_content",
-							'main' => "{$this->main_css_element} .et_pb_fh_post_carousel_content, {$this->main_css_element} .et_pb_fh_post_carousel_content div",
+							'line_height' => "{$this->main_css_element}, {$this->main_css_element} .et_pb_hm_post_carousel_content",
+							'main' => "{$this->main_css_element} .et_pb_hm_post_carousel_content, {$this->main_css_element} .et_pb_hm_post_carousel_content div",
 							'important' => 'all',
 						),
 					),
 					'meta'   => array(
 						'label'    => esc_html__( 'Meta', 'et_builder' ),
 						'css'      => array(
-							'main' => "{$this->main_css_element} .et_pb_fh_post_carousel_content .post-meta, {$this->main_css_element} .et_pb_fh_post_carousel_content .post-meta a",
-							'limited_main' => "{$this->main_css_element} .et_pb_fh_post_carousel_content .post-meta, {$this->main_css_element} .et_pb_fh_post_carousel_content .post-meta a, {$this->main_css_element} .et_pb_fh_post_carousel_content .post-meta span",
+							'main' => "{$this->main_css_element} .et_pb_hm_post_carousel_content .post-meta, {$this->main_css_element} .et_pb_hm_post_carousel_content .post-meta a",
+							'limited_main' => "{$this->main_css_element} .et_pb_hm_post_carousel_content .post-meta, {$this->main_css_element} .et_pb_hm_post_carousel_content .post-meta a, {$this->main_css_element} .et_pb_hm_post_carousel_content .post-meta span",
 							'important' => 'all',
 						),
 						'line_height' => array(
@@ -86,14 +77,7 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 						),
 					),
 				),
-				'box_shadow'            => array(
-					'default' => array(
-						'css' => array(
-							'main' => "{$this->main_css_element} .et_pb_fh_carousel_item",
-						),
-					),
-				),
-				'button'                => array(
+				'button'			=> array(
 					'button' => array(
 						'label' => esc_html__( 'Button', 'et_builder' ),
 						'css' => array(
@@ -109,7 +93,7 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 						),
 					),
 				),
-				'background'            => array(
+				'background'		=> array(
 					'css'     => array(
 						'main' => "{$this->main_css_element}, {$this->main_css_element}.et_pb_bg_layout_dark",
 					),
@@ -118,16 +102,16 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 							'default' => 'off',
 						),
 						'background_color' => array(
-							'default'          => '',
+							'default' => '',
 						),
 					),
 				),
-				'borders'               => array(
+				'borders'			=> array(
 					'default' => array(
 						'css' => array(
 							'main' => array(
-								'border_radii'  => "{$this->main_css_element} .et_pb_fh_carousel_item",
-								'border_styles'  => "{$this->main_css_element} .et_pb_fh_carousel_item"
+								'border_radii'  => "{$this->main_css_element} .et_pb_hm_carousel_item",
+								'border_styles'  => "{$this->main_css_element} .et_pb_hm_carousel_item"
 							),
 						),
 						'defaults' => array(
@@ -140,26 +124,26 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 						)
 					),
 				),
-				'margin_padding' => array(
+				'margin_padding'	=> array(
 					'css' => array(
 						'main' => '%%order_class%%',
-						'padding' => '%%order_class%% .et_pb_fh_post_carousel_description, .et_pb_fh_post_carousel_fullwidth_off%%order_class%% .et_pb_fh_post_carousel_description',
+						'padding' => '%%order_class%% .et_pb_hm_post_carousel_description, .et_pb_hm_post_carousel_fullwidth_off%%order_class%% .et_pb_hm_post_carousel_description',
 						'important' => array( 'custom_margin' ), // needed to overwrite last module margin-bottom styling
 					),
 				),
-				'text'                  => array(
+				'text'				=> array(
 					'use_background_layout' => true,
 					'css'   => array(
 						'main'             => implode( ', ', array(
-							'%%order_class%% .et_pb_fh_post_carousel .et_pb_fh_post_carousel_description .et_pb_fh_post_carousel_title',
-							'%%order_class%% .et_pb_fh_post_carousel .et_pb_fh_post_carousel_description .et_pb_fh_post_carousel_title a',
-							'%%order_class%% .et_pb_fh_post_carousel .et_pb_fh_post_carousel_description .et_pb_fh_post_carousel_content',
-							'%%order_class%% .et_pb_fh_post_carousel .et_pb_fh_post_carousel_description .et_pb_fh_post_carousel_content .post-meta',
-							'%%order_class%% .et_pb_fh_post_carousel .et_pb_fh_post_carousel_description .et_pb_fh_post_carousel_content .post-meta a',
-							'%%order_class%% .et_pb_fh_post_carousel .et_pb_fh_post_carousel_description .et_pb_fh_post_carousel_content .et_pb_button',
+							'%%order_class%% .et_pb_hm_post_carousel .et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_title',
+							'%%order_class%% .et_pb_hm_post_carousel .et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_title a',
+							'%%order_class%% .et_pb_hm_post_carousel .et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_content',
+							'%%order_class%% .et_pb_hm_post_carousel .et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_content .post-meta',
+							'%%order_class%% .et_pb_hm_post_carousel .et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_content .post-meta a',
+							'%%order_class%% .et_pb_hm_post_carousel .et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_content .et_pb_button',
 						) ),
-						'text_orientation' => '%%order_class%% .et_pb_fh_post_carousel .et_pb_fh_post_carousel_description',
-						'text_shadow'      => '%%order_class%% .et_pb_fh_post_carousel .et_pb_fh_post_carousel_description',
+						'text_orientation' => '%%order_class%% .et_pb_hm_post_carousel .et_pb_hm_post_carousel_description',
+						'text_shadow'      => '%%order_class%% .et_pb_hm_post_carousel .et_pb_hm_post_carousel_description',
 					),
 					'options' => array(
 						'text_orientation'  => array(
@@ -171,31 +155,38 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 						),
 					),
 				),
-				'filters'               => false,
-				'animation'               => false,
-				'image'                 => array(
+				'image'				=> array(
 					'css' => array(
-						'main' => '%%order_class%% .et_pb_fh_post_carousel_image',
+						'main' => '%%order_class%% .et_pb_hm_post_carousel_image',
 					),
 				),
+				'box_shadow'		=> array(
+					'default' => array(
+						'css' => array(
+							'main' => "{$this->main_css_element} .et_pb_hm_carousel_item",
+						),
+					),
+				),
+				'filters'			=> false,
+				'animation'			=> false,
 			);
 
 			$this->custom_css_fields = array(
 				'slide_description' => array(
 					'label'    => esc_html__( 'Slide Description', 'et_builder' ),
-					'selector' => '.et_pb_fh_post_carousel_description',
+					'selector' => '.et_pb_hm_post_carousel_description',
 				),
 				'slide_title' => array(
 					'label'    => esc_html__( 'Slide Title', 'et_builder' ),
-					'selector' => '.et_pb_fh_post_carousel_description .et_pb_fh_post_carousel_title',
+					'selector' => '.et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_title',
 				),
 				'slide_meta' => array(
 					'label'    => esc_html__( 'Slide Meta', 'et_builder' ),
-					'selector' => '.et_pb_fh_post_carousel_content .post-meta',
+					'selector' => '.et_pb_hm_post_carousel_content .post-meta',
 				),
 				'slide_button' => array(
 					'label'    => esc_html__( 'Slide Button', 'et_builder' ),
-					'selector' => '.et_pb_fh_post_carousel a.et_pb_more_button.et_pb_button',
+					'selector' => '.et_pb_hm_post_carousel a.et_pb_more_button.et_pb_button',
 					'no_space_before_selector' => true,
 				),
 				'slide_controllers' => array(
@@ -208,7 +199,7 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 				),
 				'slide_image' => array(
 					'label'    => esc_html__( 'Slide Image', 'et_builder' ),
-					'selector' => '.et_pb_fh_post_carousel_image',
+					'selector' => '.et_pb_hm_post_carousel_image',
 				),
 			);
 		}
@@ -217,11 +208,14 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 			$post_types = get_post_types( array('public' => true) );
 			$post_types = array_map('ucfirst', $post_types);
 			$post_typesarr = get_post_types( array('public' => true) );
-			$post_types = array_map('ucfirst', $post_types);
-			$taxonomyfields = array();
-			if($post_types) {
-				$cats = array();
-				foreach($post_typesarr as $type) {
+			//$post_types = array_map('ucfirst', $post_types);
+			//$taxonomyfields = array();
+			
+			
+			if( $post_types ) {
+				
+				// 반복문 최상단
+				foreach( $post_typesarr as $type ) {
 					$taxonomies = get_object_taxonomies( array( 'post_type' => $type ) );
 					$taxoArr = array();
 					if($taxonomies && count($taxonomies)) {
@@ -241,12 +235,13 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 								}
 							}
 						}
+						// 게시물의 텍사노미 불러오기 (카테고리, 태그 등)
 						$taxonomyfields['include_taxonomy_'.$type] = array(
-							'label'             => esc_html__( 'Select Taxonomy', 'et_builder' ),
+							'label'           => '텍사노미 선택',
 							'type'            => 'select',
 							'option_category' => 'basic_option',
 							'options'         => $taxoArr,
-							'toggle_slug'       => 'main_content',
+							'toggle_slug'     => 'main_content',
 							'show_if'         => array(
 								'selected_post_type' => array( $type ),
 							),
@@ -272,35 +267,37 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 					}
 				}
 			}
+			
+			// $fields 기본 배열 
 			$fields = array(
 				'selected_post_type' => array(
-					'label'             => esc_html__( 'Select Post Type_1', 'et_builder' ),
+					'label'             => '(하)게시물 유형 선택',
 					'type'              => 'select',
 					'options'           => $post_types,
-					'description'       => esc_html__( 'Choose post type you would like to display in the carousel.', 'et_builder' ),
+					'description'       => '(하)캐러셀에 표시할 게시물 유형을 선택하세요.',
 					'toggle_slug'       => 'main_content',
 					'computed_affects'  => array(
-						'__fhcallback',
+						'__hmcallback',
 					),
 				),
 				'posts_number' => array(
-					'label'            => esc_html__( 'Number of posts to show_2', 'et_builder' ),
+					'label'            => '(하)표시할 게시물 수',
 					'type'             => 'text',
 					'option_category'  => 'basic_option',
 					'renderer_options' => array(
 						'use_terms' => false,
 					),
-					'description'      => esc_html__( 'Enter number of posts to show', 'et_builder' ),
+					'description'      => '(하)표시할 게시물 수를 입력하세요.',
 					'toggle_slug'      => 'main_content',
 					'default'          => 10,
 					'computed_affects' => array(
-						'__fhcallback',
+						'__hmcallback',
 					),
-				),
-			
+				),		
 			);
 
-			foreach($taxonomyfields as $key => $tax) {
+			// $taxonomyfields 배열의 키와 값을 $fields 배열에 추가합니다.
+			foreach( $taxonomyfields as $key => $tax ) {
 				$fields[$key] = $tax;
 			}
 
@@ -319,7 +316,7 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 					'toggle_slug'       => 'main_content',
 					'description'       => esc_html__( 'Here you can adjust the order in which posts are displayed.', 'et_builder' ),
 					'computed_affects'  => array(
-						'__fhcallback',
+						'__hmcallback',
 					),
 					'default_on_front'  => 'date_desc',
 				),
@@ -396,7 +393,7 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 					'description'       => esc_html__( 'Showing the full content will not truncate your posts in the carousel. Showing the excerpt will only display excerpt text.', 'et_builder' ),
 					'toggle_slug'       => 'main_content',
 					'computed_affects'  => array(
-						'__fhcallback',
+						'__hmcallback',
 					),
 				),
 				'use_manual_excerpt' => array(
@@ -412,7 +409,7 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 					'description'       => esc_html__( 'Disable this option if you want to ignore manually defined excerpts and always generate it automatically.', 'et_builder' ),
 					'toggle_slug'       => 'main_content',
 					'computed_affects'  => array(
-						'__fhcallback',
+						'__hmcallback',
 					),
 				),
 				'excerpt_length' => array(
@@ -424,7 +421,7 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 					'description'       => esc_html__( 'Define the length of automatically generated excerpts. Leave blank for default ( 270 ) ', 'et_builder' ),
 					'toggle_slug'       => 'main_content',
 					'computed_affects'  => array(
-						'__fhcallback',
+						'__hmcallback',
 					),
 				),
 				'show_meta' => array(
@@ -541,7 +538,7 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 					'tab_slug'        => 'advanced',
 					'toggle_slug'       => 'carousel',
 					'computed_affects'  => array(
-						'__fhcallback',
+						'__hmcallback',
 					),
 				),
 				'autoplay_hoverpause'      => array(
@@ -569,7 +566,7 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 					'tab_slug'        => 'advanced',
 					'toggle_slug'       => 'carousel',
 					'computed_affects'  => array(
-						'__fhcallback',
+						'__hmcallback',
 					),
 					'mobile_options'  => true,
 					'responsive'      => true,
@@ -602,7 +599,7 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 					'tab_slug'        => 'advanced',
 					'toggle_slug'       => 'carousel',
 					'computed_affects'  => array(
-						'__fhcallback',
+						'__hmcallback',
 					),
 				),
 				'mouse_drag'      => array(
@@ -706,9 +703,9 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 					'tab_slug'     => 'advanced',
 					'toggle_slug'  => 'navigation',
 				),
-				'__fhcallback' => array(
+				'__hmcallback' => array(
 					'type'                => 'computed',
-					'computed_callback'   => array( 'ET_Builder_Module_FH_Divi_Post_Carousel', 'get_blog_posts' ),
+					'computed_callback'   => array( 'ET_Builder_Module_HM_Divi_Post_Carousel', 'get_blog_posts' ),
 					'computed_depends_on' => array(
 						'tax_query',
 						'orderby',
@@ -729,16 +726,16 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 		public function get_transition_fields_css_props() {
 			$fields = parent::get_transition_fields_css_props();
 			$fields['background_layout'] = array(
-				'background-color' => '%%order_class%% .et_pb_fh_post_carousel_overlay_container, %%order_class%% .et_pb_text_overlay_wrapper',
+				'background-color' => '%%order_class%% .et_pb_hm_post_carousel_overlay_container, %%order_class%% .et_pb_text_overlay_wrapper',
 				'color' => self::$_->array_get( $this->advanced_fields, 'text.css.main', '%%order_class%%' ),
 			);
 
 			$fields['bg_overlay_color'] = array(
-				'background-color' => '%%order_class%% .et_pb_fh_post_carousel .et_pb_fh_post_carousel_overlay_container',
+				'background-color' => '%%order_class%% .et_pb_hm_post_carousel .et_pb_hm_post_carousel_overlay_container',
 			);
 
 			$fields['text_overlay_color'] = array(
-				'background-color' => '%%order_class%% .et_pb_fh_post_carousel .et_pb_text_overlay_wrapper',
+				'background-color' => '%%order_class%% .et_pb_hm_post_carousel .et_pb_text_overlay_wrapper',
 			);
 
 			return $fields;
@@ -972,7 +969,7 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 			if ( 'on' === $this->props['show_image'] && 'background' === $this->props['image_placement'] && 'off' === $parallax ) {
 				if ('' !== $background_color) {
 					ET_Builder_Module::set_style( $render_slug, array(
-						'selector'    => '%%order_class%% .et_pb_fh_post_carousel:not(.et_pb_fh_post_carousel_with_no_image)',
+						'selector'    => '%%order_class%% .et_pb_hm_post_carousel:not(.et_pb_hm_post_carousel_with_no_image)',
 						'declaration' => sprintf(
 							'background-color: %1$s;',
 							esc_html( $background_color )
@@ -982,7 +979,7 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 
 				if ( '' !== $background_size && 'default' !== $background_size ) {
 					ET_Builder_Module::set_style( $render_slug, array(
-						'selector'    => '%%order_class%% .et_pb_fh_post_carousel',
+						'selector'    => '%%order_class%% .et_pb_hm_post_carousel',
 						'declaration' => sprintf(
 							'-moz-background-size: %1$s;
 							-webkit-background-size: %1$s;
@@ -993,7 +990,7 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 
 					if ( 'initial' === $background_size ) {
 						ET_Builder_Module::set_style( $render_slug, array(
-							'selector'    => 'body.ie %%order_class%% .et_pb_fh_post_carousel',
+							'selector'    => 'body.ie %%order_class%% .et_pb_hm_post_carousel',
 							'declaration' => '-moz-background-size: auto; -webkit-background-size: auto; background-size: auto;',
 						) );
 					}
@@ -1003,7 +1000,7 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 					$processed_position = str_replace( '_', ' ', $background_position );
 
 					ET_Builder_Module::set_style( $render_slug, array(
-						'selector'    => '%%order_class%% .et_pb_fh_post_carousel',
+						'selector'    => '%%order_class%% .et_pb_hm_post_carousel',
 						'declaration' => sprintf(
 							'background-position: %1$s;',
 							esc_html( $processed_position )
@@ -1013,7 +1010,7 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 
 				if ( '' !== $background_repeat ) {
 					ET_Builder_Module::set_style( $render_slug, array(
-						'selector'    => '%%order_class%% .et_pb_fh_post_carousel',
+						'selector'    => '%%order_class%% .et_pb_hm_post_carousel',
 						'declaration' => sprintf(
 							'background-repeat: %1$s;',
 							esc_html( $background_repeat )
@@ -1023,7 +1020,7 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 
 				if ( '' !== $background_blend ) {
 					ET_Builder_Module::set_style( $render_slug, array(
-						'selector'    => '%%order_class%% .et_pb_fh_post_carousel',
+						'selector'    => '%%order_class%% .et_pb_hm_post_carousel',
 						'declaration' => sprintf(
 							'background-blend-mode: %1$s;',
 							esc_html( $background_blend )
@@ -1074,28 +1071,28 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 				while ( $query->have_posts() ) {
 					$query->the_post();
 
-					$slide_class = 'off' !== $show_image && in_array( $image_placement, array( 'left', 'right' ) ) && has_post_thumbnail() ? ' et_pb_fh_post_carousel_with_image' : '';
-					$slide_class .= 'off' !== $show_image && ! has_post_thumbnail() ? ' et_pb_fh_post_carousel_with_no_image' : '';
+					$slide_class = 'off' !== $show_image && in_array( $image_placement, array( 'left', 'right' ) ) && has_post_thumbnail() ? ' et_pb_hm_post_carousel_with_image' : '';
+					$slide_class .= 'off' !== $show_image && ! has_post_thumbnail() ? ' et_pb_hm_post_carousel_with_no_image' : '';
 					$slide_class .= " et_pb_bg_layout_{$background_layout}";
 				?>
-				<div class="et_pb_fh_carousel_item et_pb_media_alignment_center<?php echo esc_attr( $slide_class ); ?>" <?php if ( 'on' !== $parallax && 'off' !== $show_image && 'background' === $image_placement ) { printf( 'style="background-image:url(%1$s)"', esc_url( wp_get_attachment_url( get_post_thumbnail_id() ) ) );  } ?><?php echo et_core_esc_previously( $data_dot_nav_custom_color ); echo et_core_esc_previously( $data_arrows_custom_color ); ?>>
+				<div class="et_pb_hm_carousel_item et_pb_media_alignment_center<?php echo esc_attr( $slide_class ); ?>" <?php if ( 'on' !== $parallax && 'off' !== $show_image && 'background' === $image_placement ) { printf( 'style="background-image:url(%1$s)"', esc_url( wp_get_attachment_url( get_post_thumbnail_id() ) ) );  } ?><?php echo et_core_esc_previously( $data_dot_nav_custom_color ); echo et_core_esc_previously( $data_arrows_custom_color ); ?>>
 					<?php
 						if($styleCounter == 0) {
 							$styleCounter++;
 							if(!empty($post_bg)) {
-								echo '<style>.et_pb_fh_post_carousel .owl-carousel .et_pb_fh_carousel_item { background-color:'.$post_bg.' } </style>';				
+								echo '<style>.et_pb_hm_post_carousel .owl-carousel .et_pb_hm_carousel_item { background-color:'.$post_bg.' } </style>';				
 							}
 
 							if($equal_height_posts === 'on') {
-								echo '<style>.et_pb_fh_post_carousel .owl-carousel .owl-stage-outer { display: flex; } .et_pb_fh_post_carousel .owl-carousel .owl-stage { display: flex; } .et_pb_fh_post_carousel .owl-carousel .et_pb_fh_carousel_item { height: 100%; }</style>';				
+								echo '<style>.et_pb_hm_post_carousel .owl-carousel .owl-stage-outer { display: flex; } .et_pb_hm_post_carousel .owl-carousel .owl-stage { display: flex; } .et_pb_hm_post_carousel .owl-carousel .et_pb_hm_carousel_item { height: 100%; }</style>';				
 							}
 				
 							if($data_dot_nav_custom_color = '' !== $dot_nav_custom_color) {
-								echo '<style>.et_pb_fh_post_carousel .owl-carousel .owl-dots button { background-color:'.$dot_nav_custom_color.' } </style>';	
+								echo '<style>.et_pb_hm_post_carousel .owl-carousel .owl-dots button { background-color:'.$dot_nav_custom_color.' } </style>';	
 							}
 				
 							if($data_arrows_custom_color = '' !== $arrows_custom_color) {
-								echo '<style>.et_pb_fh_post_carousel .owl-carousel .owl-nav button { color:'.$arrows_custom_color.' } </style>';
+								echo '<style>.et_pb_hm_post_carousel .owl-carousel .owl-nav button { color:'.$arrows_custom_color.' } </style>';
 							}
 						}
 					?>
@@ -1103,9 +1100,9 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 						<div class="et_parallax_bg<?php if ( 'off' === $parallax_method ) { echo ' et_pb_parallax_css'; } ?>" style="background-image: url(<?php echo esc_url( wp_get_attachment_url( get_post_thumbnail_id() ) ); ?>);"></div>
 					<?php } ?>
 					<div class="et_pb_container clearfix">
-						<div class="et_pb_fh_post_carousel_container_inner">
+						<div class="et_pb_hm_post_carousel_container_inner">
 							<?php if ( 'off' !== $show_image && has_post_thumbnail() && ! in_array( $image_placement, array( 'background', 'bottom' ) ) ) { ?>
-								<div class="et_pb_fh_post_carousel_image">
+								<div class="et_pb_hm_post_carousel_image">
 									<?php if($link_image !== 'off') { ?>
 									<a href="<?php the_permalink(); ?>">
 									<?php } ?>
@@ -1115,9 +1112,9 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 									<?php } ?>
 								</div>
 							<?php } ?>
-							<div class="et_pb_fh_post_carousel_description">
-									<<?php echo et_pb_process_header_level( $header_level, 'h2' ) ?> class="et_pb_fh_post_carousel_title"><a href="<?php esc_url( the_permalink() ); ?>"><?php the_title(); ?></a></<?php echo et_pb_process_header_level( $header_level, 'h2' ) ?>>
-									<div class="et_pb_fh_post_carousel_content <?php if ( 'on' !== $show_content_on_mobile ) { echo esc_attr( $hide_on_mobile_class ); } ?>">
+							<div class="et_pb_hm_post_carousel_description">
+									<<?php echo et_pb_process_header_level( $header_level, 'h2' ) ?> class="et_pb_hm_post_carousel_title"><a href="<?php esc_url( the_permalink() ); ?>"><?php the_title(); ?></a></<?php echo et_pb_process_header_level( $header_level, 'h2' ) ?>>
+									<div class="et_pb_hm_post_carousel_content <?php if ( 'on' !== $show_content_on_mobile ) { echo esc_attr( $hide_on_mobile_class ); } ?>">
 										<?php
 										if ( 'off' !== $show_meta ) {
 											printf(
@@ -1163,9 +1160,9 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 										'display_button'   => ( 'off' !== $show_more_button && '' !== $more_text ),
 									) ) );
 								?>
-							</div> <!-- .et_pb_fh_post_carousel_description -->
+							</div> <!-- .et_pb_hm_post_carousel_description -->
 							<?php if ( 'off' !== $show_image && has_post_thumbnail() && 'bottom' === $image_placement ) { ?>
-								<div class="et_pb_fh_post_carousel_image">
+								<div class="et_pb_hm_post_carousel_image">
 									<?php if($link_image !== 'off') { ?>
 									<a href="<?php the_permalink(); ?>">
 									<?php } ?>
@@ -1177,7 +1174,7 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 							<?php } ?>
 						</div>
 					</div> <!-- .et_pb_container -->
-				</div> <!-- .et_pb_fh_post_carousel -->
+				</div> <!-- .et_pb_hm_post_carousel -->
 			<?php
 				$post_index++;
 
@@ -1203,24 +1200,24 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 
 			// Module classnames
 			$this->add_classname( array(
-				'et_pb_fh_post_carousel',
-				"et_pb_fh_post_carousel_image_{$image_placement}",
+				'et_pb_hm_post_carousel',
+				"et_pb_hm_post_carousel_image_{$image_placement}",
 			) );
 
 			if ( 'off' === $fullwidth ) {
-				$this->add_classname( 'et_pb_fh_post_carousel_fullwidth_off' );
+				$this->add_classname( 'et_pb_hm_post_carousel_fullwidth_off' );
 			}
 
 			if ( 'off' === $show_arrows ) {
-				$this->add_classname( 'et_pb_fh_post_carousel_no_arrows' );
+				$this->add_classname( 'et_pb_hm_post_carousel_no_arrows' );
 			}
 
 			if ( 'off' === $show_pagination ) {
-				$this->add_classname( 'et_pb_fh_post_carousel_no_pagination' );
+				$this->add_classname( 'et_pb_hm_post_carousel_no_pagination' );
 			}
 
 			if ( 'on' === $parallax ) {
-				$this->add_classname( 'et_pb_fh_post_carousel_parallax' );
+				$this->add_classname( 'et_pb_hm_post_carousel_parallax' );
 			}
 
 			$data_background_layout       = '';
@@ -1242,11 +1239,11 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 				'<div%3$s class="%1$s"%7$s%8$s>
 					%5$s
 					%4$s
-					<div class="et_pb_fh_post_carousels owl-carousel" data-autoplay="'.$autoplay.'" data-autoplaytimeout="'.$autoplay_time.'" data-hoverpause="'.$autoplay_hoverpause.'" data-items="'.$carousel_items.'" data-items-tablet="'.$carousel_items_tablet.'" data-items-phone="'.$carousel_items_phone.'" data-loop="'.$loop.'" data-margin="'.$item_margin.'" data-mouse-drag="'.$mouse_drag.'" data-touch-drag="'.$touch_drag.'" data-rewind="'.$rewind.'" data-slide-by="'.$slide_by.'" data-dots-each="'.$dots_each.'" data-lazy-load="'.$lazy_load.'">
+					<div class="et_pb_hm_post_carousels owl-carousel" data-autoplay="'.$autoplay.'" data-autoplaytimeout="'.$autoplay_time.'" data-hoverpause="'.$autoplay_hoverpause.'" data-items="'.$carousel_items.'" data-items-tablet="'.$carousel_items_tablet.'" data-items-phone="'.$carousel_items_phone.'" data-loop="'.$loop.'" data-margin="'.$item_margin.'" data-mouse-drag="'.$mouse_drag.'" data-touch-drag="'.$touch_drag.'" data-rewind="'.$rewind.'" data-slide-by="'.$slide_by.'" data-dots-each="'.$dots_each.'" data-lazy-load="'.$lazy_load.'">
 						%2$s
-					</div> <!-- .et_pb_fh_post_carousels -->
+					</div> <!-- .et_pb_hm_post_carousels -->
 					%6$s
-				</div> <!-- .et_pb_fh_post_carousel -->
+				</div> <!-- .et_pb_hm_post_carousel -->
 				',
 				$this->module_classname( $render_slug ),
 				$content,
@@ -1273,7 +1270,7 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 				$style = sprintf(
 					'<style>%1$s</style>',
 					sprintf(
-						'.%1$s.et_pb_fh_post_carousel .et_pb_fh_post_carousel {'
+						'.%1$s.et_pb_hm_post_carousel .et_pb_hm_post_carousel {'
 						. '-webkit-box-shadow: none; '
 						. '-moz-box-shadow: none; '
 						. 'box-shadow: none; '
@@ -1301,5 +1298,6 @@ if(!class_exists('ET_Builder_Module_FH_Divi_Post_Carousel')) {
 		}
 	}
 
-	new ET_Builder_Module_FH_Divi_Post_Carousel;
+	new ET_Builder_Module_HM_Divi_Post_Carousel;
+
 }

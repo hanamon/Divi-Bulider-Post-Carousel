@@ -1,8 +1,8 @@
 <?php
 /*
- * Plugin Name:	  Divi 빌더용 포스트 캐러셀
+ * Plugin Name:	  Divi 빌더용 게시물 캐러셀
  * Plugin URI: 	  https://parkhana.com	
- * Description:	  커스텀 포스트 유형 및 다양한 캐러셀 옵션을 지원하는 Divi 빌더용 포스트 캐러셀입니다.
+ * Description:	  커스텀 게시물 유형 및 다양한 캐러셀 옵션을 지원하는 Divi 빌더용 게시물 캐러셀입니다.
  * Version:		  1.0.0
  * Author:		  Hanamon
  * Author URI:	  https://parkhana.com

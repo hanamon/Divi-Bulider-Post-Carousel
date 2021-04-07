@@ -1,6 +1,6 @@
 (function($) {
     $(document).ready(function() {
-        $('.et_pb_fh_post_carousels').each(function() {
+        $('.et_pb_hm_post_carousels').each(function() {
             var items = $(this).attr('data-items');
             var itemsTablet = $(this).attr('data-items-tablet');
             var itemsPhone = $(this).attr('data-items-phone');
