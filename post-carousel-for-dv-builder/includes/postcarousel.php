@@ -2,23 +2,24 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-if( !class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
+if( ! class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
 	
 	class ET_Builder_Module_HM_Divi_Post_Carousel extends ET_Builder_Module_Type_PostBased {
 		
-		// $slug : 모듈 숏코드 슬러그
-		public $slug = 'et_pb_hm_post_carousel';
-		
-		// $vb_support : 호환성 선언
-		public $vb_support = 'on';
-		
 		// init() : 초기화
-		public function init() {			
-			// $name : 모듈 이름
-			$this->name = '(하)게시물 캐러셀';
+		function init() {
 
+			// $name : 모듈 이름
+			$this->name			= '(하)게시물 캐러셀';
+			// $name : 모듈 이름 복수형
+			$this->plural		= '(하)게시물 캐러셀';
+			// $slug : 모듈 숏코드 슬러그
+			$this->slug			= 'et_pb_hm_post_carousel';
+			// $vb_support : 호환성 선언
+			$this->vb_support	= 'on';
+			
 			// $settings_modal_toggles : 모듈 설정(토글) 그룹 이름
-			$this->settings_modal_toggles = array(				
+			$this->settings_modal_toggles = array(
 				// 모듈 > 컨텐츠 설정 그룹
 				'general'  => array(
 					'toggles' => array(
@@ -27,66 +28,82 @@ if( !class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
 						'featured_image'	=> '(하)대표 이미지',
 						'post_background'	=> '(하)게시물 배경',					
 					),
-				),
-				
+				),				
 				// 모듈 > 디자인 설정 그룹
 				'advanced' => array(
 					'toggles' => array(
 						'carousel'	 => '(하)캐러셀',
 						'navigation' => '(하)네비게이션',
+						'text'		 => array(
+							'title'    => '(하)텍스트',
+							'priority' => 30, // 이 숫자를 기준으로 그룹이 정렬됩니다. (가장 낮은 것부터 높은 것까지)
+						),
+						'image' => array(
+							'title' => esc_html__( 'Image', 'et_builder' ),
+						),
 					),
 				),
 			);
 
-			// $advanced_fields : 모듈 디자인 설정 그룹의 필드 구성
+			// $advanced_fields : 모듈 '디자인' 설정 그룹의 필드 구성
 			$this->advanced_fields = array(
+				// 제목 본문 메타 텍스트 필드 구성
 				'fonts'				=> array(
 					'header' => array(
-						'label'    => '(하)제목',
-						'css'      => array(
-							'main' => "{$this->main_css_element} .et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_title, {$this->main_css_element} .et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_title a",
-							'important' => array( 'size', 'font-size', 'plugin_all' ),
+						'label'			=> '(하)제목',
+						'css'			=> array( // 여기서 정의한 CSS에 적용된다.
+							'main' 			=> "{$this->main_css_element} .et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_title, {$this->main_css_element} .et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_title a",
+							'important' 	=> 'all',
 						),
-						'header_level' => array(
+						'header_level'	=> array(
 							'default' => 'h2',
+						),
+						'font_size'		=> array(
+							'default' => '20px',
+						),
+						'line_height'	=> array(
+							'default' => '1em',
 						),
 					),
 					'body'   => array(
-						'label'    => '(하)본문',
-						'css'      => array(
-							'line_height' => "{$this->main_css_element}, {$this->main_css_element} .et_pb_hm_post_carousel_content",
-							'main' => "{$this->main_css_element} .et_pb_hm_post_carousel_content, {$this->main_css_element} .et_pb_hm_post_carousel_content div",
-							'important' => 'all',
+						'label'			=> '(하)본문',
+						'css'			=> array(
+							'main' 			=> "{$this->main_css_element} et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_content, {$this->main_css_element} et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_content div",
+							'line_height' 	=> "{$this->main_css_element}, {$this->main_css_element} .et_pb_hm_post_carousel_content",
+							'important' 	=> 'all',
+						),
+						'font_size'		=> array(
+							'default' => '16px',
+						),
+						'line_height'	=> array(
+							'default' => '1em',
 						),
 					),
 					'meta'   => array(
-						'label'    => esc_html__( 'Meta', 'et_builder' ),
-						'css'      => array(
-							'main' => "{$this->main_css_element} .et_pb_hm_post_carousel_content .post-meta, {$this->main_css_element} .et_pb_hm_post_carousel_content .post-meta a",
-							'limited_main' => "{$this->main_css_element} .et_pb_hm_post_carousel_content .post-meta, {$this->main_css_element} .et_pb_hm_post_carousel_content .post-meta a, {$this->main_css_element} .et_pb_hm_post_carousel_content .post-meta span",
-							'important' => 'all',
+						'label'			=> '(하)메타',
+						'css'			=> array(
+							'main' 			=> "{$this->main_css_element} .et_pb_hm_post_carousel_content .post-meta, {$this->main_css_element} .et_pb_hm_post_carousel_content .post-meta a",
+							'limited_main' 	=> "{$this->main_css_element} .et_pb_hm_post_carousel_content .post-meta, {$this->main_css_element} .et_pb_hm_post_carousel_content .post-meta a, {$this->main_css_element} .et_pb_hm_post_carousel_content .post-meta span",
+							'important' 	=> 'all',
 						),
-						'line_height' => array(
+						'font_size'		=> array(
+							'default' => '13px',
+						),
+						'line_height'	=> array(
 							'default' => '1em',
-						),
-						'font_size' => array(
-							'default' => '16px',
-						),
-						'letter_spacing' => array(
-							'default' => '0',
 						),
 					),
 				),
 				'button'			=> array(
 					'button' => array(
-						'label' => esc_html__( 'Button', 'et_builder' ),
-						'css' => array(
-							'main' => "{$this->main_css_element} .et_pb_more_button.et_pb_button",
-							'limited_main' => "{$this->main_css_element} .et_pb_more_button.et_pb_button",
-							'alignment' => "{$this->main_css_element} .et_pb_button_wrapper",
+						'label'			=> '(하)버튼',
+						'css'			=> array(
+							'main'			=> "{$this->main_css_element} .et_pb_more_button.et_pb_button",
+							'limited_main'	=> "{$this->main_css_element} .et_pb_more_button.et_pb_button",
+							'alignment'		=> "{$this->main_css_element} .et_pb_button_wrapper",
 						),
-						'use_alignment' => true,
-						'box_shadow'    => array(
+						'use_alignment'	=> true,
+						'box_shadow'	=> array(
 							'css' => array(
 								'main' => '%%order_class%% .et_pb_button',
 							),
@@ -94,47 +111,46 @@ if( !class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
 					),
 				),
 				'background'		=> array(
-					'css'     => array(
-						'main' => "{$this->main_css_element}, {$this->main_css_element}.et_pb_bg_layout_dark",
+					'css' => array(
+						'main'		=> "{$this->main_css_element}, {$this->main_css_element}.et_pb_bg_layout_dark",
 					),
 					'options' => array(
-						'parallax_method' => array(
-							'default' => 'off',
+						'parallax_method'	=> array(
+							'default'		=> 'off',
 						),
-						'background_color' => array(
-							'default' => '',
+						'background_color'	=> array(
+							'default'		=> '',
 						),
 					),
 				),
 				'borders'			=> array(
 					'default' => array(
-						'css' => array(
-							'main' => array(
-								'border_radii'  => "{$this->main_css_element} .et_pb_hm_carousel_item",
-								'border_styles'  => "{$this->main_css_element} .et_pb_hm_carousel_item"
+						'css'		=> array(
+							'main'		=> array(
+								'border_radii'	=> "{$this->main_css_element} .et_pb_hm_carousel_item",
+								'border_styles'	=> "{$this->main_css_element} .et_pb_hm_carousel_item",
 							),
 						),
-						'defaults' => array(
-							'border_radii' => array(),
-							'border_styles' => array(
+						'defaults'	=> array(
+							'border_radii'	=> array(),
+							'border_styles'	=> array(
 								'width' => '0',
 								'color' => '',
-								'style' => 'solid'
-							)
+								'style' => 'solid',
+							),
 						)
 					),
 				),
 				'margin_padding'	=> array(
 					'css' => array(
-						'main' => '%%order_class%%',
-						'padding' => '%%order_class%% .et_pb_hm_post_carousel_description, .et_pb_hm_post_carousel_fullwidth_off%%order_class%% .et_pb_hm_post_carousel_description',
-						'important' => array( 'custom_margin' ), // needed to overwrite last module margin-bottom styling
+						'main'		=> '%%order_class%%',
+						'padding'	=> '%%order_class%% .et_pb_hm_post_carousel_description, .et_pb_hm_post_carousel_fullwidth_off%%order_class%% .et_pb_hm_post_carousel_description',
+						'important'	=> array( 'custom_margin' ), // 마지막 모듈 margin-bottom 스타일을 덮어 쓰는데 필요
 					),
 				),
 				'text'				=> array(
-					'use_background_layout' => true,
-					'css'   => array(
-						'main'             => implode( ', ', array(
+					'css' => array(
+						'main' => implode( ', ', array(
 							'%%order_class%% .et_pb_hm_post_carousel .et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_title',
 							'%%order_class%% .et_pb_hm_post_carousel .et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_title a',
 							'%%order_class%% .et_pb_hm_post_carousel .et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_content',
@@ -154,11 +170,7 @@ if( !class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
 							'hover' => 'tabs',
 						),
 					),
-				),
-				'image'				=> array(
-					'css' => array(
-						'main' => '%%order_class%% .et_pb_hm_post_carousel_image',
-					),
+					'use_background_layout' => true,
 				),
 				'box_shadow'		=> array(
 					'default' => array(
@@ -167,77 +179,146 @@ if( !class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
 						),
 					),
 				),
-				'filters'			=> false,
-				'animation'			=> false,
 			);
 
+			// $custom_css_fields : 모듈 '고급' 설정 그룹의 필드 구성
 			$this->custom_css_fields = array(
+				'slide_image' => array(
+					'label'    => '(하)슬라이드 이미지',
+					'selector' => '.et_pb_hm_post_carousel_image',
+				),
 				'slide_description' => array(
-					'label'    => esc_html__( 'Slide Description', 'et_builder' ),
+					'label'    => '(하)슬라이드 설명',
 					'selector' => '.et_pb_hm_post_carousel_description',
 				),
 				'slide_title' => array(
-					'label'    => esc_html__( 'Slide Title', 'et_builder' ),
+					'label'    => '(하)슬라이드 제목',
 					'selector' => '.et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_title',
 				),
 				'slide_meta' => array(
-					'label'    => esc_html__( 'Slide Meta', 'et_builder' ),
+					'label'    => '(하)슬라이드 메타',
 					'selector' => '.et_pb_hm_post_carousel_content .post-meta',
 				),
 				'slide_button' => array(
-					'label'    => esc_html__( 'Slide Button', 'et_builder' ),
+					'label'    => '(하)슬라이드 버튼',
 					'selector' => '.et_pb_hm_post_carousel a.et_pb_more_button.et_pb_button',
 					'no_space_before_selector' => true,
 				),
 				'slide_controllers' => array(
-					'label'    => esc_html__( 'Slide Controllers', 'et_builder' ),
+					'label'    => '(하)슬라이드 제어기',
 					'selector' => '.et-pb-controllers',
 				),
 				'slide_active_controller' => array(
-					'label'    => esc_html__( 'Slide Active Controller', 'et_builder' ),
+					'label'    => '(하)슬라이드 활성 제어기',
 					'selector' => '.et-pb-controllers .et-pb-active-control',
 				),
-				'slide_image' => array(
-					'label'    => esc_html__( 'Slide Image', 'et_builder' ),
-					'selector' => '.et_pb_hm_post_carousel_image',
-				),
 			);
+
 		}
 
+		// get_fields() : 토글 그룹의 '하위 필드' 추가하기 return array();
 		function get_fields() {
-			$post_types = get_post_types( array('public' => true) );
-			$post_types = array_map('ucfirst', $post_types);
-			$post_typesarr = get_post_types( array('public' => true) );
-			//$post_types = array_map('ucfirst', $post_types);
-			//$taxonomyfields = array();
 			
+			/*		*
+				(1)
+			*		*/
+			// 변수 선언
+			$fields				= array();	// 배열 : return 할 Array() 변수이다.
+
+			$post_types_obj		= '';		// 객체 : '모든' 게시물 유형
+			$post_types_arr		= '';		// 객체 : '모든' 게시물 유형의 슬러그
+			$post_types_txt		= '';		// 객체 : '모든' 게시물 유형의 슬러그 (앞글자 대문자)		
+			$typeArr			= array();	// 객체 : '모든' 게시물 유형의 라벨
+
+			$taxonomies			= array(); 	// 배열 : foreach($type) 게시물 유형에 '모든' 분류
+			$taxonomy_details	= ''; 		// 객체 : foreach($type) 게시물 유형에 foreach($tax) 분류의 모든 세부 정보
+			$taxoArr			= array();	// 배열 : foreach($type) 게시물 유형에 foreach($tax) 분류의 모든 세부 정보 중 일부(label)를 배열화		
+			$termsData			= array();	// 배열 : foreach($type) 게시물 유형에 foreach($tax) 분류에 해당하는 모든 컨텐츠(terms)와 그 세부 정보
 			
-			if( $post_types ) {
-				
-				// 반복문 최상단
-				foreach( $post_typesarr as $type ) {
-					$taxonomies = get_object_taxonomies( array( 'post_type' => $type ) );
-					$taxoArr = array();
-					if($taxonomies && count($taxonomies)) {
-						$termsArr = array();
-						foreach($taxonomies as $tax) {
+			$taxonomyfields		= array();	// 배열 : foreach($type) 게시물 유형에 foreach($tax) 분류와 해당하는 모든 컨텐츠(terms)를 각 배열에 삽입 / $fields 배열에 추가된다.
+			
+
+			/*		*
+				(2)
+			*		*/
+			$post_types_obj = get_post_types( array('public'=>true), 'object' );
+			// echo '<script>';
+			// echo 'console.dir('. json_encode( $post_types_obj ) .')';
+			// echo '</script>';
+
+			// get_post_type() WP 함수 : 게시물 유형('public'=>true)을 가져온다.
+			$post_types_arr = get_post_types( array('public'=>true) );	
+			// echo '<script>';
+			// echo 'console.dir('. json_encode( $post_types_arr ) .')';
+			// echo '</script>';
+
+			// array_map() PHP 내장함수 : $post_types (배열/객체)을 PHP 내장함수 ucfirst() 함수로 보내고 그 함수에서 제공한 새 값을 반환한다.
+			// ucfirst() PHP 내장함수 : 알파벳 문자열의 첫 글자를 대문자로 반환한다.
+			$post_types_txt = array_map('ucfirst', $post_types_arr);
+			// echo '<script>';
+			// echo 'console.dir('. json_encode( $post_types_txt ) .')';
+			// echo '</script>';
+
+			/*		*
+				(3)
+			*		*/
+			// if 문 : $post_types_txt 객체가 true면 실행한다.
+			if( $post_types_txt ) {
+				// foreach 문 : $post_types_arr 객체의 프로퍼티(post,page,product...) 수 만큼 반복하여 동작한다.
+				foreach( $post_types_arr as $type ) {
+					
+					// echo '<script>';
+					// echo 'console.dir('. json_encode( $type ) .')';
+					// echo '</script>';
+
+					$typeArr[$type] = get_post_type_object( $type )->label;
+					// echo '<script>';
+					// echo 'console.dir('. json_encode( $typeArr ) .')';
+					// echo '</script>';
+
+					// get_object_taxonomies() WP 함수 : 주어진 게시물 유형에 모든 분류 이름을 검색한다.
+					$taxonomies = get_object_taxonomies( array('post_type'=>$type) );
+					// echo '<script>';
+					// echo 'console.dir('. json_encode( $taxonomies ) .')';
+					// echo '</script>';
+
+					// if 문 : $taxonomies가 true이고 count($taxonomies)가 true면 실행된다.
+					if( $taxonomies && count($taxonomies) ) {
+
+						// foreach 문 : $taxonomies 배열의 프로퍼티("category","post_tag"...) 수 만큼 반복하여 동작한다.
+						foreach( $taxonomies as $tax ) {
+							
+							// echo '<script>';
+							// echo 'console.dir('. json_encode( $tax ) .')';
+							// echo '</script>';
+							
+							// get_taxonomy() WP 함수 : 매개 변수 문자열이 'WP 분류 객체'인지 확인하고 맞다면 그것을 반환한다.
 							$taxonomy_details = get_taxonomy( $tax );
-							$taxoArr[$tax] = $taxonomy_details->label;
-							$termsData = get_terms(
-								array(
-									'taxonomy' => $tax,
-									'hide_empty' => true
-								)
-							);
-							if($termsData && count($termsData)) {
-								foreach($termsData as $td) {
-									$termsArr[$td->slug] = $td->name;
-								}
-							}
+							// echo '<script>';
+							// echo 'console.dir('. json_encode( $taxonomy_details ) .')';
+							// echo '</script>';
+
+							// $taxonomies 배열의 프로퍼티(category, post_tag...)를 Key로
+							// $taxonomies 배열의 프로퍼티 각각의 $taxonomy_details 객체의 label 프로퍼티를 Value로 $taxoArr 배열에 담는다.
+							$taxoArr[$tax]	  = $taxonomy_details->label;					
+							// echo '<script>';
+							// echo 'console.dir('. json_encode( $taxoArr ) .')';
+							// echo '</script>';
+							
+							// get_terms() WP 함수 : 지정된 분류에서 모든 컨텐츠를 검색한다. ()
+							$termsData 		  = get_terms( array(
+								'taxonomy'	 => $tax,
+								'hide_empty' => true,
+							) );							
+							// echo '<script>';
+							// echo 'console.dir('. json_encode( $termsData ) .')';
+							// echo '</script>';
+
 						}
-						// 게시물의 텍사노미 불러오기 (카테고리, 태그 등)
+
+						// $taxonomyfields 배열 : 게시물의 분류 불러오기 (카테고리, 태그... 등)
 						$taxonomyfields['include_taxonomy_'.$type] = array(
-							'label'           => '텍사노미 선택',
+							'label'           => '(하)' . $typeArr . ' 분류 선택',
 							'type'            => 'select',
 							'option_category' => 'basic_option',
 							'options'         => $taxoArr,
@@ -246,34 +327,41 @@ if( !class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
 								'selected_post_type' => array( $type ),
 							),
 						);
-						foreach($taxonomies as $tax) {
+
+						// foreach 문 : $taxonomies 배열의 프로퍼티("category","post_tag"...) 수 만큼 반복하여 동작한다.
+						foreach( $taxonomies as $tax ) {
+							
+							// $taxonomyfields 배열 : 게시물의 분류의 카테고리 선택 (국어, 수학, 영어... 등)
 							$taxonomyfields['include_cat_'.$tax] = array(
-								'label'             => esc_html__( 'Select Category', 'et_builder' ),
-								'type'              => 'categories',
-								'option_category'   => 'basic_option',
-								'description'       => esc_html__( 'Choose post type you would like to display in the carousel.', 'et_builder' ),
-								'toggle_slug'       => 'main_content',
-								'show_if'         => array(
-									'selected_post_type' => array( $type ),
-								),
-								'taxonomy_name'     => $tax,
-								'toggle_slug'       => 'main_content',
-								'show_if'           => array(
-									'include_taxonomy_'.$type => array( $tax ),
-									'selected_post_type' => array( $type ),
+								'label'				=> '(하)카테고리 선택',
+								'type'				=> 'categories',
+								'option_category'	=> 'basic_option',
+								'description'		=> '캐러셀에 표시 할 카테고리를 선택하세요.',
+								'taxonomy_name'		=> $tax,
+								'toggle_slug'		=> 'main_content',
+								'show_if'			=> array(
+									'include_taxonomy_'.$type	=> array( $tax ),
+									'selected_post_type'		=> array( $type ),
 								),
 							);
+
 						}
+
 					}
+
 				}
 			}
-			
-			// $fields 기본 배열 
+
+
+			/*		*
+				(4)
+			*		*/
+			// $fields : return 할 Array의 기본 배열 
 			$fields = array(
 				'selected_post_type' => array(
 					'label'             => '(하)게시물 유형 선택',
 					'type'              => 'select',
-					'options'           => $post_types,
+					'options'           => $typeArr,
 					'description'       => '(하)캐러셀에 표시할 게시물 유형을 선택하세요.',
 					'toggle_slug'       => 'main_content',
 					'computed_affects'  => array(
@@ -296,10 +384,46 @@ if( !class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
 				),		
 			);
 
-			// $taxonomyfields 배열의 키와 값을 $fields 배열에 추가합니다.
+
+			/*		*
+				(5)
+			*		*/
+			// foreach 문 : $taxonomyfields 배열의 요소 수 만큼 반복하여 동작한다. (Key와 Value를 가져온다.)
 			foreach( $taxonomyfields as $key => $tax ) {
+				// $taxonomyfields 배열의 키와 값을 $fields 배열에 추가합니다.
 				$fields[$key] = $tax;
 			}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			
+
+
 
 			$fieldPart2 = array(
 				'orderby' => array(
@@ -721,7 +845,52 @@ if( !class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
 			}
 
 			return $fields;
+
+
+
+
+
+
+
+
+
+
+
+
 		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 		public function get_transition_fields_css_props() {
 			$fields = parent::get_transition_fields_css_props();
@@ -1299,5 +1468,4 @@ if( !class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
 	}
 
 	new ET_Builder_Module_HM_Divi_Post_Carousel;
-
 }
