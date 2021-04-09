@@ -3,16 +3,13 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 if( ! class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
-	
-	class ET_Builder_Module_HM_Divi_Post_Carousel extends ET_Builder_Module_Type_PostBased {
-		
+	class ET_Builder_Module_HM_Divi_Post_Carousel extends ET_Builder_Module_Type_PostBased {		
 		// init() : 초기화
 		function init() {
-
 			// $name : 모듈 이름
-			$this->name			= '(하)게시물 캐러셀';
+			$this->name			= '게시물 캐러셀';
 			// $name : 모듈 이름 복수형
-			$this->plural		= '(하)게시물 캐러셀';
+			$this->plural		= '게시물 캐러셀';
 			// $slug : 모듈 숏코드 슬러그
 			$this->slug			= 'et_pb_hm_post_carousel';
 			// $vb_support : 호환성 선언
@@ -23,19 +20,19 @@ if( ! class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
 				// 모듈 > 컨텐츠 설정 그룹
 				'general'  => array(
 					'toggles' => array(
-						'main_content'		=> '(하)컨텐츠',				
-						'elements'			=> '(하)요소',
-						'featured_image'	=> '(하)대표 이미지',
-						'post_background'	=> '(하)게시물 배경',					
+						'main_content'		=> '컨텐츠',				
+						'elements'			=> '요소',
+						'featured_image'	=> '대표 이미지',
+						'post_background'	=> '게시물 배경',					
 					),
 				),				
 				// 모듈 > 디자인 설정 그룹
 				'advanced' => array(
 					'toggles' => array(
-						'carousel'	 => '(하)캐러셀',
-						'navigation' => '(하)네비게이션',
+						'carousel'	 => '캐러셀',
+						'navigation' => '네비게이션',
 						'text'		 => array(
-							'title'    => '(하)텍스트',
+							'title'    => '텍스트',
 							'priority' => 30, // 이 숫자를 기준으로 그룹이 정렬됩니다. (가장 낮은 것부터 높은 것까지)
 						),
 						'image' => array(
@@ -50,7 +47,7 @@ if( ! class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
 				// 제목 본문 메타 텍스트 필드 구성
 				'fonts'				=> array(
 					'header' => array(
-						'label'			=> '(하)제목',
+						'label'			=> '제목',
 						'css'			=> array( // 여기서 정의한 CSS에 적용된다.
 							'main' 			=> "{$this->main_css_element} .et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_title, {$this->main_css_element} .et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_title a",
 							'important' 	=> 'all',
@@ -66,7 +63,7 @@ if( ! class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
 						),
 					),
 					'body'   => array(
-						'label'			=> '(하)본문',
+						'label'			=> '본문',
 						'css'			=> array(
 							'main' 			=> "{$this->main_css_element} et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_content, {$this->main_css_element} et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_content div",
 							'line_height' 	=> "{$this->main_css_element}, {$this->main_css_element} .et_pb_hm_post_carousel_content",
@@ -80,7 +77,7 @@ if( ! class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
 						),
 					),
 					'meta'   => array(
-						'label'			=> '(하)메타',
+						'label'			=> '메타',
 						'css'			=> array(
 							'main' 			=> "{$this->main_css_element} .et_pb_hm_post_carousel_content .post-meta, {$this->main_css_element} .et_pb_hm_post_carousel_content .post-meta a",
 							'limited_main' 	=> "{$this->main_css_element} .et_pb_hm_post_carousel_content .post-meta, {$this->main_css_element} .et_pb_hm_post_carousel_content .post-meta a, {$this->main_css_element} .et_pb_hm_post_carousel_content .post-meta span",
@@ -96,7 +93,7 @@ if( ! class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
 				),
 				'button'			=> array(
 					'button' => array(
-						'label'			=> '(하)버튼',
+						'label'			=> '버튼',
 						'css'			=> array(
 							'main'			=> "{$this->main_css_element} .et_pb_more_button.et_pb_button",
 							'limited_main'	=> "{$this->main_css_element} .et_pb_more_button.et_pb_button",
@@ -184,96 +181,66 @@ if( ! class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
 			// $custom_css_fields : 모듈 '고급' 설정 그룹의 필드 구성
 			$this->custom_css_fields = array(
 				'slide_image' => array(
-					'label'    => '(하)슬라이드 이미지',
+					'label'    => '슬라이드 이미지',
 					'selector' => '.et_pb_hm_post_carousel_image',
 				),
 				'slide_description' => array(
-					'label'    => '(하)슬라이드 설명',
+					'label'    => '슬라이드 설명',
 					'selector' => '.et_pb_hm_post_carousel_description',
 				),
 				'slide_title' => array(
-					'label'    => '(하)슬라이드 제목',
+					'label'    => '슬라이드 제목',
 					'selector' => '.et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_title',
 				),
 				'slide_meta' => array(
-					'label'    => '(하)슬라이드 메타',
+					'label'    => '슬라이드 메타',
 					'selector' => '.et_pb_hm_post_carousel_content .post-meta',
 				),
 				'slide_button' => array(
-					'label'    => '(하)슬라이드 버튼',
+					'label'    => '슬라이드 버튼',
 					'selector' => '.et_pb_hm_post_carousel a.et_pb_more_button.et_pb_button',
 					'no_space_before_selector' => true,
 				),
 				'slide_controllers' => array(
-					'label'    => '(하)슬라이드 제어기',
+					'label'    => '슬라이드 제어기',
 					'selector' => '.et-pb-controllers',
 				),
 				'slide_active_controller' => array(
-					'label'    => '(하)슬라이드 활성 제어기',
+					'label'    => '슬라이드 활성 제어기',
 					'selector' => '.et-pb-controllers .et-pb-active-control',
 				),
 			);
-
 		}
 
 		// get_fields() : 토글 그룹의 '하위 필드' 추가하기 return array();
 		function get_fields() {
-			
-			/*		*
-				(1)
-			*		*/
+			/* (1) */
 			// 변수 선언
-			$fields				= array();	// 배열 : return 할 Array() 변수이다.
-
-			$post_types_obj		= '';		// 객체 : '모든' 게시물 유형
 			$post_types_arr		= '';		// 객체 : '모든' 게시물 유형의 슬러그
 			$post_types_txt		= '';		// 객체 : '모든' 게시물 유형의 슬러그 (앞글자 대문자)		
-			$typeArr			= array();	// 객체 : '모든' 게시물 유형의 라벨
-
 			$taxonomies			= array(); 	// 배열 : foreach($type) 게시물 유형에 '모든' 분류
 			$taxonomy_details	= ''; 		// 객체 : foreach($type) 게시물 유형에 foreach($tax) 분류의 모든 세부 정보
 			$taxoArr			= array();	// 배열 : foreach($type) 게시물 유형에 foreach($tax) 분류의 모든 세부 정보 중 일부(label)를 배열화		
 			$termsData			= array();	// 배열 : foreach($type) 게시물 유형에 foreach($tax) 분류에 해당하는 모든 컨텐츠(terms)와 그 세부 정보
-			
+
+			$fields				= array();	// 배열 : return 할 Array() 변수이다.
 			$taxonomyfields		= array();	// 배열 : foreach($type) 게시물 유형에 foreach($tax) 분류와 해당하는 모든 컨텐츠(terms)를 각 배열에 삽입 / $fields 배열에 추가된다.
-			
+			$fieldPart2			= array();	// 배열
 
-			/*		*
-				(2)
-			*		*/
-			$post_types_obj = get_post_types( array('public'=>true), 'object' );
-			// echo '<script>';
-			// echo 'console.dir('. json_encode( $post_types_obj ) .')';
-			// echo '</script>';
-
+			/* (2) */
 			// get_post_type() WP 함수 : 게시물 유형('public'=>true)을 가져온다.
 			$post_types_arr = get_post_types( array('public'=>true) );	
-			// echo '<script>';
-			// echo 'console.dir('. json_encode( $post_types_arr ) .')';
-			// echo '</script>';
 
-			// array_map() PHP 내장함수 : $post_types (배열/객체)을 PHP 내장함수 ucfirst() 함수로 보내고 그 함수에서 제공한 새 값을 반환한다.
-			// ucfirst() PHP 내장함수 : 알파벳 문자열의 첫 글자를 대문자로 반환한다.
+			// array_map() PHP 내장함수 : $post_types (배열/객체)을 PHP 내장함수 ucfirst() 함수로 보내고 그 함수에서 제공한 새 값을 반환한다. ucfirst() PHP 내장함수 : 알파벳 문자열의 첫 글자를 대문자로 반환한다.
 			$post_types_txt = array_map('ucfirst', $post_types_arr);
-			// echo '<script>';
-			// echo 'console.dir('. json_encode( $post_types_txt ) .')';
-			// echo '</script>';
 
-			/*		*
-				(3)
-			*		*/
+			/* (3) */
 			// if 문 : $post_types_txt 객체가 true면 실행한다.
 			if( $post_types_txt ) {
 				// foreach 문 : $post_types_arr 객체의 프로퍼티(post,page,product...) 수 만큼 반복하여 동작한다.
-				foreach( $post_types_arr as $type ) {
-					
+				foreach( $post_types_arr as $type ) {					
 					// echo '<script>';
 					// echo 'console.dir('. json_encode( $type ) .')';
-					// echo '</script>';
-
-					$typeArr[$type] = get_post_type_object( $type )->label;
-					// echo '<script>';
-					// echo 'console.dir('. json_encode( $typeArr ) .')';
 					// echo '</script>';
 
 					// get_object_taxonomies() WP 함수 : 주어진 게시물 유형에 모든 분류 이름을 검색한다.
@@ -282,12 +249,13 @@ if( ! class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
 					// echo 'console.dir('. json_encode( $taxonomies ) .')';
 					// echo '</script>';
 
+					// 이 배열 변수는 여기에서 선언 해줘야한다.
+					$taxoArr = array();
+
 					// if 문 : $taxonomies가 true이고 count($taxonomies)가 true면 실행된다.
 					if( $taxonomies && count($taxonomies) ) {
-
 						// foreach 문 : $taxonomies 배열의 프로퍼티("category","post_tag"...) 수 만큼 반복하여 동작한다.
 						foreach( $taxonomies as $tax ) {
-							
 							// echo '<script>';
 							// echo 'console.dir('. json_encode( $tax ) .')';
 							// echo '</script>';
@@ -313,15 +281,15 @@ if( ! class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
 							// echo '<script>';
 							// echo 'console.dir('. json_encode( $termsData ) .')';
 							// echo '</script>';
-
 						}
 
 						// $taxonomyfields 배열 : 게시물의 분류 불러오기 (카테고리, 태그... 등)
 						$taxonomyfields['include_taxonomy_'.$type] = array(
-							'label'           => '(하)' . $typeArr . ' 분류 선택',
+							'label'           => '분류 선택',
 							'type'            => 'select',
 							'option_category' => 'basic_option',
 							'options'         => $taxoArr,
+							'default'         => 30,
 							'toggle_slug'     => 'main_content',
 							'show_if'         => array(
 								'selected_post_type' => array( $type ),
@@ -330,52 +298,46 @@ if( ! class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
 
 						// foreach 문 : $taxonomies 배열의 프로퍼티("category","post_tag"...) 수 만큼 반복하여 동작한다.
 						foreach( $taxonomies as $tax ) {
-							
 							// $taxonomyfields 배열 : 게시물의 분류의 카테고리 선택 (국어, 수학, 영어... 등)
 							$taxonomyfields['include_cat_'.$tax] = array(
-								'label'				=> '(하)카테고리 선택',
-								'type'				=> 'categories',
-								'option_category'	=> 'basic_option',
-								'description'		=> '캐러셀에 표시 할 카테고리를 선택하세요.',
-								'taxonomy_name'		=> $tax,
-								'toggle_slug'		=> 'main_content',
-								'show_if'			=> array(
-									'include_taxonomy_'.$type	=> array( $tax ),
-									'selected_post_type'		=> array( $type ),
+								'label'             => '카테고리 선택',
+								'type'              => 'categories',
+								'option_category'   => 'basic_option',
+								'default'         	=> 40,
+								'description'       => '캐러셀에 표시 할 카테고리를 선택하세요.',
+								'toggle_slug'       => 'main_content',
+								'taxonomy_name'     => $tax,
+								'show_if'           => array(
+									'include_taxonomy_'.$type => array( $tax ),
+									'selected_post_type' => array( $type ),
 								),
 							);
-
 						}
-
 					}
-
 				}
 			}
 
-
-			/*		*
-				(4)
-			*		*/
+			/* (4) */
 			// $fields : return 할 Array의 기본 배열 
 			$fields = array(
 				'selected_post_type' => array(
-					'label'             => '(하)게시물 유형 선택',
+					'label'             => '게시물 유형 선택',
 					'type'              => 'select',
-					'options'           => $typeArr,
-					'description'       => '(하)캐러셀에 표시할 게시물 유형을 선택하세요.',
+					'options'           => $post_types_txt,
+					'description'       => '캐러셀에 표시할 게시물 유형을 선택하세요.',
 					'toggle_slug'       => 'main_content',
 					'computed_affects'  => array(
 						'__hmcallback',
 					),
 				),
 				'posts_number' => array(
-					'label'            => '(하)표시할 게시물 수',
+					'label'            => '표시할 게시물 수',
 					'type'             => 'text',
 					'option_category'  => 'basic_option',
 					'renderer_options' => array(
 						'use_terms' => false,
 					),
-					'description'      => '(하)표시할 게시물 수를 입력하세요.',
+					'description'      => '표시할 게시물 수를 입력하세요.',
 					'toggle_slug'      => 'main_content',
 					'default'          => 10,
 					'computed_affects' => array(
@@ -384,449 +346,414 @@ if( ! class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
 				),		
 			);
 
-
-			/*		*
-				(5)
-			*		*/
+			/* (5) */
 			// foreach 문 : $taxonomyfields 배열의 요소 수 만큼 반복하여 동작한다. (Key와 Value를 가져온다.)
 			foreach( $taxonomyfields as $key => $tax ) {
 				// $taxonomyfields 배열의 키와 값을 $fields 배열에 추가합니다.
 				$fields[$key] = $tax;
 			}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			
-
-
-
+			/* (6) */
 			$fieldPart2 = array(
+				// 'toggle_slug' => 'main_content'
 				'orderby' => array(
-					'label'             => esc_html__( 'Order By', 'et_builder' ),
+					'label'             => '정렬 기준',
 					'type'              => 'select',
 					'option_category'   => 'configuration',
 					'options'           => array(
-						'date_desc'  => esc_html__( 'Date: new to old', 'et_builder' ),
-						'date_asc'   => esc_html__( 'Date: old to new', 'et_builder' ),
-						'title_asc'  => esc_html__( 'Title: a-z', 'et_builder' ),
-						'title_desc' => esc_html__( 'Title: z-a', 'et_builder' ),
-						'rand'       => esc_html__( 'Random', 'et_builder' ),
-					),
-					'toggle_slug'       => 'main_content',
-					'description'       => esc_html__( 'Here you can adjust the order in which posts are displayed.', 'et_builder' ),
-					'computed_affects'  => array(
-						'__hmcallback',
+						'date_desc'  => '날짜: 내림순',
+						'date_asc'   => '날짜: 오름순',
+						'title_asc'  => '제목: a-z',
+						'title_desc' => '제목: z-a',
+						'rand'       => '무작위',
 					),
 					'default_on_front'  => 'date_desc',
-				),
-				'post_bg' => array(
-					'label'            => esc_html__( 'Post Item Background Color', 'et_builder' ),
-					'type'         => 'color-alpha',
-					'custom_color' => true,
-					'toggle_slug'      => 'post_background',
-					'default'          => '#fff',
-					'description'     => esc_html__( 'This setting will apply background color to post item ignored if featured image placement was set to background.', 'et_builder' ),
-				),
-				'show_arrows'         => array(
-					'label'           => esc_html__( 'Show Arrows_1', 'et_builder' ),
-					'type'            => 'yes_no_button',
-					'option_category' => 'configuration',
-					'options'         => array(
-						'on'  => esc_html__( 'Yes', 'et_builder' ),
-						'off' => esc_html__( 'No', 'et_builder' ),
-					),
-					'default_on_front'  => 'on',
-					'toggle_slug'     => 'elements',
-					'description'     => esc_html__( 'This setting will turn on and off the navigation arrows.', 'et_builder' ),
-				),
-				'show_pagination' => array(
-					'label'             => esc_html__( 'Show Controls_2', 'et_builder' ),
-					'type'              => 'yes_no_button',
-					'option_category'   => 'configuration',
-					'options'           => array(
-						'on'  => esc_html__( 'Yes', 'et_builder' ),
-						'off' => esc_html__( 'No', 'et_builder' ),
-					),
-					'default_on_front'  => 'on',
-					'toggle_slug'       => 'elements',
-					'description'       => esc_html__( 'This setting will turn on and off the circle buttons at the bottom of the carousel.', 'et_builder' ),
-				),
-				'show_more_button' => array(
-					'label'             => esc_html__( 'Show Read More Button_3', 'et_builder' ),
-					'type'              => 'yes_no_button',
-					'option_category'   => 'configuration',
-					'options'           => array(
-						'on'  => esc_html__( 'Yes', 'et_builder' ),
-						'off' => esc_html__( 'No', 'et_builder' ),
-					),
-					'default_on_front'  => 'on',
-					'affects' => array(
-						'more_text',
-					),
-					'toggle_slug'       => 'elements',
-					'description'       => esc_html__( 'This setting will turn on and off the read more button.', 'et_builder' ),
+					'toggle_slug'       => 'main_content',
+					'description'       => '여기서 게시물이 표시되는 순서를 조정할 수 있습니다.',
+					'computed_affects'  => array(
+						'__hmcallback',
+					),					
 				),
 				'more_text' => array(
-					'label'             => esc_html__( 'Button Text', 'et_builder' ),
+					'label'             => '버튼 텍스트',
 					'type'              => 'text',
 					'option_category'   => 'configuration',
-					'default_on_front'  => esc_html__( 'Read More', 'et_builder' ),
+					'default_on_front'  => '더 읽기',
 					'depends_show_if'   => 'on',
 					'toggle_slug'       => 'main_content',
 					'dynamic_content'   => 'text',
-					'description'       => esc_html__( 'Define the text which will be displayed on "Read More" button. leave blank for default ( Read More )', 'et_builder' ),
+					'description'       => '"더 읽기" 버튼에 표시 될 텍스트를 정의합니다. 기본값은 공백으로 두십시오.',
 				),
 				'content_source' => array(
-					'label'             => esc_html__( 'Content Display', 'et_builder' ),
+					'label'             => '컨텐츠 화면',
 					'type'              => 'select',
 					'option_category'   => 'configuration',
 					'options'           => array(
-						'off' => esc_html__( 'Show Excerpt', 'et_builder' ),
-						'on'  => esc_html__( 'Show Content', 'et_builder' ),
+						'off' => '발췌본 보여주기',
+						'on'  => '글내용 보여주기',
 					),
 					'default'           => 'off',
-					'affects' => array(
+					'affects' 			=> array(
 						'use_manual_excerpt',
 						'excerpt_length',
 					),
-					'description'       => esc_html__( 'Showing the full content will not truncate your posts in the carousel. Showing the excerpt will only display excerpt text.', 'et_builder' ),
+					'description'       => '전체 콘텐츠를 표시해도 캐러셀에서 게시물이 잘리지 않습니다. 발췌문을 표시하면 발췌문 만 표시됩니다.',
 					'toggle_slug'       => 'main_content',
 					'computed_affects'  => array(
 						'__hmcallback',
 					),
 				),
 				'use_manual_excerpt' => array(
-					'label'             => esc_html__( 'Use Post Excerpt if Defined', 'et_builder' ),
+					'label'             => '정의 된 경우 게시풀 발췌 사용',
 					'type'              => 'yes_no_button',
 					'option_category'   => 'configuration',
 					'options'           => array(
-						'on'  => esc_html__( 'Yes', 'et_builder' ),
-						'off' => esc_html__( 'No', 'et_builder' ),
+						'on'  => '네',
+						'off' => '아니요',
 					),
 					'default'           => 'on',
 					'depends_show_if'   => 'off',
-					'description'       => esc_html__( 'Disable this option if you want to ignore manually defined excerpts and always generate it automatically.', 'et_builder' ),
+					'description'       => '수동으로 정의한 발췌 부분을 무시하고 항상 자동으로 생성하려면이 옵션을 비활성화하십시오.',
 					'toggle_slug'       => 'main_content',
 					'computed_affects'  => array(
 						'__hmcallback',
 					),
 				),
 				'excerpt_length' => array(
-					'label'             => esc_html__( 'Automatic Excerpt Length', 'et_builder' ),
+					'label'             => '자동 발췌 길이',
 					'type'              => 'text',
 					'default'           => '270',
 					'option_category'   => 'configuration',
 					'depends_show_if'   => 'off',
-					'description'       => esc_html__( 'Define the length of automatically generated excerpts. Leave blank for default ( 270 ) ', 'et_builder' ),
+					'description'       => '자동으로 생성 된 발췌문의 길이를 정의합니다. 기본값은 비워 둡니다.',
 					'toggle_slug'       => 'main_content',
 					'computed_affects'  => array(
 						'__hmcallback',
 					),
 				),
-				'show_meta' => array(
-					'label'           => esc_html__( 'Show Post Meta_4', 'et_builder' ),
-					'type'            => 'yes_no_button',
-					'option_category' => 'configuration',
-					'options'         => array(
-						'on'  => esc_html__( 'Yes', 'et_builder' ),
-						'off' => esc_html__( 'No', 'et_builder' ),
+
+				// 'toggle_slug' => 'elements'
+				'show_arrows' => array(
+					'label'            => '화살표 표시',
+					'type'             => 'yes_no_button',
+					'option_category'  => 'configuration',
+					'options'          => array(
+						'on'  => '네',
+						'off' => '아니요',
 					),
 					'default_on_front' => 'on',
-					'toggle_slug'     => 'elements',
-					'description'     => esc_html__( 'This setting will turn on and off the meta section.', 'et_builder' ),
+					'description'      => '이 설정은 탐색 화살표를 켜고 끕니다.',
+					'toggle_slug'      => 'elements',
 				),
-				'learndash_course_grid_short_description' => array(
-					'label'           => esc_html__( 'Show learndash course grid short description', 'et_builder' ),
-					'type'            => 'yes_no_button',
-					'option_category' => 'configuration',
-					'options'         => array(
-						'on'  => esc_html__( 'Yes', 'et_builder' ),
-						'off' => esc_html__( 'No', 'et_builder' ),
-					),
-					'default_on_front' => 'on',
-					'toggle_slug'     => 'elements',
-					'description'     => esc_html__( 'This setting will turn on and off the meta section.', 'et_builder' ),
-				),
-				'show_image' => array(
-					'label'             => esc_html__( 'Show Featured Image', 'et_builder' ),
+				'show_pagination' => array(
+					'label'             => '컨트롤 표시',
 					'type'              => 'yes_no_button',
 					'option_category'   => 'configuration',
 					'options'           => array(
-						'on'  => esc_html__( 'Yes', 'et_builder' ),
-						'off' => esc_html__( 'No', 'et_builder' ),
+						'on'  => '네',
+						'off' => '아니요',
+					),
+					'default_on_front'  => 'on',
+					'description'       => '이 설정은 캐러셀 하단에 있는 원 버튼을 켜고 끕니다.',
+					'toggle_slug'       => 'elements',
+				),
+				'show_more_button' => array(
+					'label'             => '자세히 보기 버튼',
+					'type'              => 'yes_no_button',
+					'option_category'   => 'configuration',
+					'options'           => array(
+						'on'  => '네',
+						'off' => '아니요',
+					),
+					'default_on_front'  => 'on',
+					'affects' => array(
+						'more_text',
+					),
+					'description'       => '이 설정은 더 읽기 버튼을 켜고 끕니다.',
+					'toggle_slug'       => 'elements',
+				),
+				'show_meta' => array(
+					'label'            => '게시물 메타 표시',
+					'type'             => 'yes_no_button',
+					'option_category'  => 'configuration',
+					'options'          => array(
+						'on'  => '네',
+						'off' => '아니요',
+					),
+					'default_on_front' => 'on',
+					'description'      => '이 설정은 메타 섹션을 켜고 끕니다.',
+					'toggle_slug'      => 'elements',
+				),
+				'learndash_course_grid_short_description' => array(
+					'label'            => '런대쉬 코스 그리드 간단한 설명 표시',
+					'type'             => 'yes_no_button',
+					'option_category'  => 'configuration',
+					'options'          => array(
+						'on'  => '네',
+						'off' => '아니요',
+					),
+					'default_on_front' => 'on',
+					'description'      => '이 설정은 런대쉬 코스 그리드 간단 설명을 켜고 끕니다.',
+					'toggle_slug'      => 'elements',
+				),
+
+				// 'toggle_slug' => 'featured_image'
+				'show_image' => array(
+					'label'             => '대표 이미지 보여주기',
+					'type'              => 'yes_no_button',
+					'option_category'   => 'configuration',
+					'options'           => array(
+						'on'  => '네',
+						'off' => '아니요',
 					),
 					'default_on_front'  => 'on',
 					'affects'           => array(
 						'image_placement',
 						'link_image',
-					),
+					),					
+					'description'       => '이 설정은 캐러셀의 특성 이미지를 켜고 끕니다.',
 					'toggle_slug'       => 'featured_image',
-					'description'       => esc_html__( 'This setting will turn on and off the featured image in the carousel.', 'et_builder' ),
 				),
 				'link_image' => array(
-					'label'             => esc_html__( 'Apply Link on Image', 'et_builder' ),
+					'label'             => '이미지에 링크 적용',
 					'type'              => 'yes_no_button',
 					'option_category'   => 'configuration',
 					'options'           => array(
-						'on'  => esc_html__( 'Yes', 'et_builder' ),
-						'off' => esc_html__( 'No', 'et_builder' ),
+						'on'  => '네',
+						'off' => '아니요',
 					),
 					'default_on_front'  => 'on',
 					'depends_show_if'   => 'on',
+					'description'       => '이 설정은 캐러셀의 특성 이미지에 게시물 링크를 적용합니다.',
 					'toggle_slug'       => 'featured_image',
-					'description'       => esc_html__( 'This setting will apply post link on featured image in the carousel.', 'et_builder' ),
 				),
 				'image_placement' => array(
-					'label'             => esc_html__( 'Image Placement', 'et_builder' ),
+					'label'             => '이미지 배치',
 					'type'              => 'select',
 					'option_category'   => 'configuration',
 					'options'           => array(
-						'background' => esc_html__( 'Background', 'et_builder' ),
-						// 'left'       => esc_html__( 'Left', 'et_builder' ),
-						// 'right'      => esc_html__( 'Right', 'et_builder' ),
-						'top'        => esc_html__( 'Top', 'et_builder' ),
-						'bottom'     => esc_html__( 'Bottom', 'et_builder' ),
+						'background' => '배경',
+						'top'        => '상단',
+						'bottom'     => '아래',
 					),
 					'default_on_front'  => 'top',
-					'depends_show_if'   => 'on',
+					'depends_show_if'   => 'on',		
+					'description'       => '슬라이드에 특성 이미지를 표시 할 방법을 선택하십시오.',
 					'toggle_slug'       => 'featured_image',
-					'description'       => esc_html__( 'Select how you would like to display the featured image in slides', 'et_builder' ),
 				),
-				'equal_height_posts'      => array(
-					'label'           => esc_html__( 'Equalize Posts Height', 'et_builder' ),
-					'type'            => 'yes_no_button',
-					'option_category' => 'configuration',
-					'options'         => array(
-						'on'  => esc_html__( 'Yes', 'et_builder' ),
-						'off' => esc_html__( 'No', 'et_builder' ),
+
+				// 'toggle_slug' => 'post_background'
+				'post_bg' => array(
+					'label'			=> '게시물 항목 배경색',
+					'type'			=> 'color-alpha',
+					'custom_color'	=> true,				
+					'default'		=> '#fff',
+					'description'	=> '이 설정은 추천 이미지 배치가 배경으로 설정된 경우 무시 된 게시물 항목에 배경색을 적용합니다.',
+					'toggle_slug'	=> 'post_background',
+				),
+
+				//'toggle_slug' => 'carousel'
+				'equal_height_posts' => array(
+					'label'            => '게시물 높이 균등화',
+					'type'             => 'yes_no_button',
+					'option_category'  => 'configuration',
+					'options'          => array(
+						'on'  => '네',
+						'off' => '아니요',
 					),
 					'default_on_front' => 'on',
-					'tab_slug'        => 'advanced',
-					'toggle_slug'     => 'carousel',
-					'description'     => esc_html__( 'When enabled, all carousel items will take same height.', 'et_builder' ),
+					'tab_slug'         => 'advanced',					
+					'description'      => '활성화하면 모든 캐 러셀 항목의 높이가 동일합니다.',
+					'toggle_slug'      => 'carousel',
 				),
-				'autoplay'      => array(
-					'label'           => esc_html__( 'Autoplay Carousel', 'et_builder' ),
-					'type'            => 'yes_no_button',
-					'option_category' => 'configuration',
-					'options'         => array(
-						'on'  => esc_html__( 'Yes', 'et_builder' ),
-						'off' => esc_html__( 'No', 'et_builder' ),
+				'autoplay' => array(
+					'label'            => '자동 재생 캐 러셀',
+					'type'             => 'yes_no_button',
+					'option_category'  => 'configuration',
+					'options'          => array(
+						'on'  => '네',
+						'off' => '아니요',
 					),
 					'default_on_front' => 'on',
-					'affects'         => array(
+					'affects'          => array(
 						'autoplay_time',
 						'autoplay_hoverpause'
 					),
-					'tab_slug'        => 'advanced',
-					'toggle_slug'     => 'carousel',
-					'description'     => esc_html__( 'When enabled, carousel will start rotating automatically.', 'et_builder' ),
+					'description'      => '사용 설정하면 캐러셀이 자동으로 회전하기 시작합니다.',
+					'tab_slug'         => 'advanced',				
+					'toggle_slug'      => 'carousel',
 				),
 				'autoplay_time' => array(
-					'label'             => esc_html__( 'Autoplay Time', 'et_builder' ),
+					'label'             => '자동 재생 시간',
 					'type'              => 'range',
 					'range_settings'    =>  array(
-						'min' => '1000',
-						'max' => '10000',
-						'step' => '500'
+						'min'  => '1000',
+						'max'  => '10000',
+						'step' => '500',
 					),
-					'default' => '5000',
-					'validate_unit' => true,
+					'default' 			=> '5000',
+					'validate_unit' 	=> true,
 					'option_category'   => 'configuration',
-					'description'       => esc_html__( 'Define the autoplay time for carousel.', 'et_builder' ),
-					'tab_slug'        => 'advanced',
+					'description'       => '캐러셀의 자동 재생 시간을 정의합니다.',
+					'tab_slug'        	=> 'advanced',
 					'toggle_slug'       => 'carousel',
 					'computed_affects'  => array(
 						'__hmcallback',
 					),
 				),
-				'autoplay_hoverpause'      => array(
-					'label'           => esc_html__( 'Autoplay Hover Pause', 'et_builder' ),
-					'type'            => 'yes_no_button',
-					'option_category' => 'configuration',
-					'options'         => array(
-						'on'  => esc_html__( 'Yes', 'et_builder' ),
-						'off' => esc_html__( 'No', 'et_builder' ),
+				'autoplay_hoverpause' => array(
+					'label'            => '자동 재생 호버 일시 중지',
+					'type'             => 'yes_no_button',
+					'option_category'  => 'configuration',
+					'options'          => array(
+						'on'  => '네',
+						'off' => '아니요',
 					),
 					'default_on_front' => 'off',
-					'affects'         => array(
+					'affects'          => array(
 						'autoplay_time',
 					),
-					'tab_slug'        => 'advanced',
-					'toggle_slug'     => 'carousel',
-					'description'     => esc_html__( 'When enabled, carousel will stop moving once mouse enters to carousel items.', 'et_builder' ),
+					'description'      => '활성화 된 경우 마우스가 캐러셀 항목에 들어가면 캐러셀 이동이 중지됩니다.',
+					'tab_slug'         => 'advanced',
+					'toggle_slug'      => 'carousel',
 				),
 				'carousel_items' => array(
-					'label'             => esc_html__( 'Items to show', 'et_builder' ),
+					'label'             => '표시 할 항목',
 					'type'              => 'text',
-					'default' => '3',
+					'default' 			=> '3',
 					'option_category'   => 'configuration',
-					'description'       => esc_html__( 'Define the carousel items to show carousel.', 'et_builder' ),
-					'tab_slug'        => 'advanced',
+					'description'       => '캐러셀을 표시할 캐러셀 항목을 정의합니다.',
+					'tab_slug'          => 'advanced',
 					'toggle_slug'       => 'carousel',
 					'computed_affects'  => array(
 						'__hmcallback',
 					),
-					'mobile_options'  => true,
-					'responsive'      => true,
-				),
-				'loop'      => array(
-					'label'           => esc_html__( 'Loop Items', 'et_builder' ),
-					'type'            => 'yes_no_button',
-					'option_category' => 'configuration',
-					'options'         => array(
-						'on'  => esc_html__( 'Yes', 'et_builder' ),
-						'off' => esc_html__( 'No', 'et_builder' ),
+					'mobile_options'    => true,
+					'responsive'        => true,
+				),				
+				'loop' => array(
+					'label'            => '루프 항목',
+					'type'             => 'yes_no_button',
+					'option_category'  => 'configuration',
+					'options'          => array(
+						'on'  => '네',
+						'off' => '아니요',
 					),
 					'default_on_front' => 'on',
-					'tab_slug'        => 'advanced',
-					'toggle_slug'     => 'carousel',
-					'description'     => esc_html__( 'When enabled, a carousel will rotate infintely.', 'et_builder' ),
+					'description'      => '사용 설정하면 캐러셀이 무한 회전합니다.',
+					'tab_slug'         => 'advanced',
+					'toggle_slug'      => 'carousel',				
 				),
 				'item_margin' => array(
-					'label'             => esc_html__( 'Margin between items', 'et_builder' ),
+					'label'             => '항목 사이의 여백',
 					'type'              => 'range',
 					'range_settings'    =>  array(
-						'min' => '0',
-						'max' => '30',
-						'step' => '10'
+						'min'  => '0',
+						'max'  => '30',
+						'step' => '10',
 					),
-					'default' => '0',
-					'validate_unit' => true,
+					'default' 			=> '0',
+					'validate_unit' 	=> true,
 					'option_category'   => 'configuration',
-					'description'       => esc_html__( 'Define the carousel items to show carousel.', 'et_builder' ),
-					'tab_slug'        => 'advanced',
+					'description'       => '캐러셀을 표시할 캐러셀 항목을 정의합니다.',
+					'tab_slug'        	=> 'advanced',
 					'toggle_slug'       => 'carousel',
 					'computed_affects'  => array(
 						'__hmcallback',
 					),
 				),
-				'mouse_drag'      => array(
-					'label'           => esc_html__( 'Mouse Drag', 'et_builder' ),
-					'type'            => 'yes_no_button',
-					'option_category' => 'configuration',
-					'options'         => array(
-						'on'  => esc_html__( 'Yes', 'et_builder' ),
-						'off' => esc_html__( 'No', 'et_builder' ),
+				'mouse_drag' => array(
+					'label'            => '마우스 드래그',
+					'type'             => 'yes_no_button',
+					'option_category'  => 'configuration',
+					'options'          => array(
+						'on'  => '네',
+						'off' => '아니요',
 					),
 					'default_on_front' => 'on',
-					'tab_slug'        => 'advanced',
-					'toggle_slug'     => 'carousel',
-					'description'     => esc_html__( 'When enabled, a you can drag the carousel using mouse.', 'et_builder' ),
+					'description'      => '활성화되면 마우스를 사용하여 캐러셀을 드래그 할 수 있습니다.',
+					'tab_slug'         => 'advanced',
+					'toggle_slug'      => 'carousel',			
 				),
-				'touch_drag'      => array(
-					'label'           => esc_html__( 'Touch Drag', 'et_builder' ),
-					'type'            => 'yes_no_button',
-					'option_category' => 'configuration',
-					'options'         => array(
-						'on'  => esc_html__( 'Yes', 'et_builder' ),
-						'off' => esc_html__( 'No', 'et_builder' ),
+				'touch_drag' => array(
+					'label'            => '터치 드래그',
+					'type'             => 'yes_no_button',
+					'option_category'  => 'configuration',
+					'options'          => array(
+						'on'  => '네',
+						'off' => '아니요',
 					),
 					'default_on_front' => 'on',
-					'tab_slug'        => 'advanced',
-					'toggle_slug'     => 'carousel',
-					'description'     => esc_html__( 'When enabled, a you can drag the carousel using touch on touch devices.', 'et_builder' ),
+					'tab_slug'         => 'advanced',
+					'toggle_slug'      => 'carousel',
+					'description'      => '활성화되면 터치 장치에서 터치를 사용하여 캐러셀을 드래그 할 수 있습니다.',
 				),
-				/*'auto_width'      => array(
-					'label'           => esc_html__( 'Auto Width', 'et_builder' ),
-					'type'            => 'yes_no_button',
-					'option_category' => 'configuration',
-					'options'         => array(
-						'on'  => esc_html__( 'Yes', 'et_builder' ),
-						'off' => esc_html__( 'No', 'et_builder' ),
+				'rewind' => array(
+					'label'            => '되감기',
+					'type'             => 'yes_no_button',
+					'option_category'  => 'configuration',
+					'options'          => array(
+						'on'  => '네',
+						'off' => '아니요',
 					),
 					'default_on_front' => 'off',
-					'tab_slug'        => 'advanced',
-					'toggle_slug'     => 'carousel',
-					'description'     => esc_html__( 'When enabled, a carousel items will be in dynamic width.', 'et_builder' ),
-				),*/
-				'rewind'      => array(
-					'label'           => esc_html__( 'Rewind', 'et_builder' ),
-					'type'            => 'yes_no_button',
-					'option_category' => 'configuration',
-					'options'         => array(
-						'on'  => esc_html__( 'Yes', 'et_builder' ),
-						'off' => esc_html__( 'No', 'et_builder' ),
-					),
-					'default_on_front' => 'off',
-					'tab_slug'        => 'advanced',
-					'toggle_slug'     => 'carousel',
-					'description'     => esc_html__( 'When enabled, a carousel will rewind to start once reached to end items.', 'et_builder' ),
+					'description'      => '사용 설정하면 최종 항목에 도달하면 캐러셀이 되감기 시작됩니다.',
+					'tab_slug'         => 'advanced',
+					'toggle_slug'      => 'carousel',
 				),
-				'slide_by'      => array(
-					'label'           => esc_html__( 'Slide By', 'et_builder' ),
-					'type'            => 'text',
-					'option_category' => 'configuration',
+				'slide_by' => array(
+					'label'            => '슬라이드',
+					'type'             => 'text',
+					'option_category'  => 'configuration',
 					'default_on_front' => '1',
-					'tab_slug'        => 'advanced',
-					'toggle_slug'     => 'carousel',
-					'description'     => esc_html__( 'Enter number of items you want to slide at once.', 'et_builder' ),
+					'description'      => '한 번에 슬라이드하려는 항목 수를 입력하십시오.',
+					'tab_slug'         => 'advanced',
+					'toggle_slug'      => 'carousel',	
 				),
-				'dots_each'      => array(
-					'label'           => esc_html__( 'Dots Each', 'et_builder' ),
+				'dots_each' => array(
+					'label'           => '단일 점',
 					'type'            => 'yes_no_button',
 					'option_category' => 'configuration',
 					'options'         => array(
-						'on'  => esc_html__( 'Yes', 'et_builder' ),
-						'off' => esc_html__( 'No', 'et_builder' ),
+						'on'  => '네',
+						'off' => '아니요',
 					),
 					'default_on_front' => 'off',
+					'description'     => '사용 설정하면 캐러셀에 캐러셀 항목에 대해 단일 점이 표시됩니다.',
 					'tab_slug'        => 'advanced',
-					'toggle_slug'     => 'carousel',
-					'description'     => esc_html__( 'When enabled, a carousel will show single-single dots for carousel item.', 'et_builder' ),
+					'toggle_slug'     => 'carousel',	
 				),
-				'lazy_load'      => array(
-					'label'           => esc_html__( 'Lazy Load', 'et_builder' ),
+				'lazy_load' => array(
+					'label'           => '지연로드',
 					'type'            => 'yes_no_button',
 					'option_category' => 'configuration',
 					'options'         => array(
-						'on'  => esc_html__( 'Yes', 'et_builder' ),
-						'off' => esc_html__( 'No', 'et_builder' ),
+						'on'  => '네',
+						'off' => '아니요',
 					),
 					'default_on_front' => 'off',
+					'description'     => '활성화되면 캐러셀 이미지가 지연로드됩니다.',
 					'tab_slug'        => 'advanced',
-					'toggle_slug'     => 'carousel',
-					'description'     => esc_html__( 'When enabled, a carousel images will be lazy loaded.', 'et_builder' ),
-				),
+					'toggle_slug'     => 'carousel',			
+				),				
+
+				// 'toggle_slug'  => 'navigation'
 				'arrows_custom_color' => array(
-					'label'        => esc_html__( 'Arrows Custom Color', 'et_builder' ),
+					'label'        => '화살표 사용자 정의 색상',
 					'type'         => 'color-alpha',
 					'custom_color' => true,
 					'tab_slug'     => 'advanced',
 					'toggle_slug'  => 'navigation',
 				),
 				'dot_nav_custom_color' => array(
-					'label'        => esc_html__( 'Dot Nav Custom Color', 'et_builder' ),
+					'label'        => '점 네비게이션 사용자 정의 색상',
 					'type'         => 'color-alpha',
 					'custom_color' => true,
 					'tab_slug'     => 'advanced',
 					'toggle_slug'  => 'navigation',
 				),
+
+				// computed
 				'__hmcallback' => array(
 					'type'                => 'computed',
 					'computed_callback'   => array( 'ET_Builder_Module_HM_Divi_Post_Carousel', 'get_blog_posts' ),
@@ -840,57 +767,14 @@ if( ! class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
 				),
 			);
 
-			foreach($fieldPart2 as $key => $tax) {
+			/* (7) */
+			foreach( $fieldPart2 as $key => $tax ) {
 				$fields[$key] = $tax;
 			}
 
+			/* (8) */
 			return $fields;
-
-
-
-
-
-
-
-
-
-
-
-
 		}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 		public function get_transition_fields_css_props() {
 			$fields = parent::get_transition_fields_css_props();
@@ -1071,7 +955,7 @@ if( ! class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
 			return $query;
 		}
 
-		function render( $attrs, $content = null, $render_slug ) {
+		function render( $attrs, $content=null, $render_slug ) {
 			$selected_post_type              			= $this->props['selected_post_type'];
 			$autoplay                        			= $this->props['autoplay'];
 			$autoplay_time                   			= $this->props['autoplay_time'];
@@ -1085,7 +969,6 @@ if( ! class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
 			$item_margin                     			= $this->props['item_margin'];
 			$mouse_drag                      			= $this->props['mouse_drag'];
 			$touch_drag                      			= $this->props['touch_drag'];
-			/*$auto_width                    			  = $this->props['auto_width'];*/
 			$rewind                          			= $this->props['rewind'];
 			$slide_by                        			= $this->props['slide_by'];
 			$dots_each                       			= $this->props['dots_each'];
