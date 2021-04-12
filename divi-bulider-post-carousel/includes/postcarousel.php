@@ -404,7 +404,7 @@ if( ! class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
 					),
 				),
 				'use_manual_excerpt' => array(
-					'label'             => '정의 된 경우 게시풀 발췌 사용',
+					'label'             => '정의 된 경우 게시물 발췌 사용',
 					'type'              => 'yes_no_button',
 					'option_category'   => 'configuration',
 					'options'           => array(
@@ -482,6 +482,18 @@ if( ! class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
 					),
 					'default_on_front' => 'on',
 					'description'      => '이 설정은 메타 섹션을 켜고 끕니다.',
+					'toggle_slug'      => 'elements',
+				),
+				'show_description' => array(
+					'label'            => '게시물 설명 표시',
+					'type'             => 'yes_no_button',
+					'option_category'  => 'configuration',
+					'options'          => array(
+						'on'  => '네',
+						'off' => '아니요',
+					),
+					'default_on_front' => 'on',
+					'description'      => '이 설정은 설명 섹션을 켜고 끕니다.',
 					'toggle_slug'      => 'elements',
 				),
 				'learndash_course_grid_short_description' => array(
@@ -1001,6 +1013,7 @@ if( ! class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
 			$background_layout_hover_enabled 			= et_pb_hover_options()->is_enabled( 'background_layout', $this->props );
 			$orderby                         			= $this->props['orderby'];
 			$show_meta                       			= $this->props['show_meta'];
+			$show_description                       	= $this->props['show_description'];
 			$learndash_course_grid_short_description    = $this->props['learndash_course_grid_short_description'];
 			$button_custom                   			= $this->props['custom_button'];
 			$custom_icon                     			= $this->props['button_icon'];
@@ -1190,13 +1203,15 @@ if( ! class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
 										}
 										?>
 										<?php
+										if( 'off' !== $show_description ){
+											echo '<p class="post-html">' . et_core_intentionally_unescaped( $query->posts[ $post_index ]->post_content, 'html' ) . '</p>';
+										}
+										?>
+										<?php
 										if( 'off' !== $learndash_course_grid_short_description ){
 											echo '<p class="learndash-course-grid-short-description">' . et_core_intentionally_unescaped( $query->posts[ $post_index ]->_learndash_course_grid_short_description, 'html' ) . '</p>';
 										}
 										?>
-										<?php
-											echo '<p>' . et_core_intentionally_unescaped( $query->posts[ $post_index ]->post_content, 'html' ) . '</p>';
-										?>		
 									</div>
 								<?php
 									// Render button

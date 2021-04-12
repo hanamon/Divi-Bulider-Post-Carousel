@@ -12,6 +12,7 @@
 .et_pb_hm_post_carousel_content .post-meta { font-size: 13px; }
 .et_pb_hm_post_carousel_description { min-height:100px; }
 .et_pb_hm_post_carousel_description p { padding-bottom:0; }
+.et_pb_hm_post_carousel_description p:before { display:none; }
 .et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_title { padding:10px 0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 @media only screen and (max-width:767px) {
     .et_pb_hm_post_carousel .owl-carousel .owl-nav button.owl-prev {
