@@ -20,19 +20,19 @@ if( ! class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
 				// 모듈 > 컨텐츠 설정 그룹
 				'general'  => array(
 					'toggles' => array(
-						'main_content'		=> '컨텐츠',				
-						'elements'			=> '요소',
-						'featured_image'	=> '대표 이미지',
-						'post_background'	=> '게시물 배경',					
+						'main_content'    => '컨텐츠',				
+						'elements'        => '요소',
+						'featured_image'  => '대표 이미지',
+						'post_background' => '게시물 배경',					
 					),
 				),				
 				// 모듈 > 디자인 설정 그룹
 				'advanced' => array(
 					'toggles' => array(
-						'carousel'	 => '캐러셀',
+						'carousel' => '캐러셀',
 						'navigation' => '네비게이션',
-						'text'		 => array(
-							'title'    => '텍스트',
+						'text' => array(
+							'title' => '텍스트',
 							'priority' => 30, // 이 숫자를 기준으로 그룹이 정렬됩니다. (가장 낮은 것부터 높은 것까지)
 						),
 						'image' => array(
@@ -45,92 +45,92 @@ if( ! class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
 			// $advanced_fields : 모듈 '디자인' 설정 그룹의 필드 구성
 			$this->advanced_fields = array(
 				// 제목 본문 메타 텍스트 필드 구성
-				'fonts'				=> array(
+				'fonts' => array(
 					'header' => array(
-						'label'			=> '제목',
-						'css'			=> array( // 여기서 정의한 CSS에 적용된다.
-							'main' 			=> "{$this->main_css_element} .et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_title, {$this->main_css_element} .et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_title a",
-							'important' 	=> 'all',
+						'label' => '제목',
+						'css' => array( // 여기서 정의한 CSS에 적용된다.
+							'main' => "{$this->main_css_element} .et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_title, {$this->main_css_element} .et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_title a",
+							'important' => 'all',
 						),
-						'header_level'	=> array(
+						'header_level' => array(
 							'default' => 'h2',
 						),
-						'font_size'		=> array(
+						'font_size' => array(
 							'default' => '20px',
 						),
-						'line_height'	=> array(
+						'line_height' => array(
 							'default' => '1em',
 						),
 					),
-					'body'   => array(
-						'label'			=> '본문',
-						'css'			=> array(
-							'main' 			=> "{$this->main_css_element} et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_content, {$this->main_css_element} et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_content div",
-							'line_height' 	=> "{$this->main_css_element}, {$this->main_css_element} .et_pb_hm_post_carousel_content",
-							'important' 	=> 'all',
+					'body' => array(
+						'label' => '본문',
+						'css' => array(
+							'main' => "{$this->main_css_element} et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_content, {$this->main_css_element} et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_content div",
+							'line_height' => "{$this->main_css_element}, {$this->main_css_element} .et_pb_hm_post_carousel_content",
+							'important' => 'all',
 						),
-						'font_size'		=> array(
+						'font_size' => array(
 							'default' => '16px',
 						),
-						'line_height'	=> array(
+						'line_height' => array(
 							'default' => '1em',
 						),
 					),
-					'meta'   => array(
-						'label'			=> '메타',
-						'css'			=> array(
-							'main' 			=> "{$this->main_css_element} .et_pb_hm_post_carousel_content .post-meta, {$this->main_css_element} .et_pb_hm_post_carousel_content .post-meta a",
-							'limited_main' 	=> "{$this->main_css_element} .et_pb_hm_post_carousel_content .post-meta, {$this->main_css_element} .et_pb_hm_post_carousel_content .post-meta a, {$this->main_css_element} .et_pb_hm_post_carousel_content .post-meta span",
-							'important' 	=> 'all',
+					'meta' => array(
+						'label' => '메타',
+						'css' => array(
+							'main' => "{$this->main_css_element} .et_pb_hm_post_carousel_content .post-meta, {$this->main_css_element} .et_pb_hm_post_carousel_content .post-meta a",
+							'limited_main' => "{$this->main_css_element} .et_pb_hm_post_carousel_content .post-meta, {$this->main_css_element} .et_pb_hm_post_carousel_content .post-meta a, {$this->main_css_element} .et_pb_hm_post_carousel_content .post-meta span",
+							'important' => 'all',
 						),
-						'font_size'		=> array(
+						'font_size' => array(
 							'default' => '13px',
 						),
-						'line_height'	=> array(
+						'line_height' => array(
 							'default' => '1em',
 						),
 					),
 				),
-				'button'			=> array(
+				'button' => array(
 					'button' => array(
-						'label'			=> '버튼',
-						'css'			=> array(
-							'main'			=> "{$this->main_css_element} .et_pb_more_button.et_pb_button",
-							'limited_main'	=> "{$this->main_css_element} .et_pb_more_button.et_pb_button",
-							'alignment'		=> "{$this->main_css_element} .et_pb_button_wrapper",
+						'label' => '버튼',
+						'css' => array(
+							'main' => "{$this->main_css_element} .et_pb_more_button.et_pb_button",
+							'limited_main' => "{$this->main_css_element} .et_pb_more_button.et_pb_button",
+							'alignment' => "{$this->main_css_element} .et_pb_button_wrapper",
 						),
-						'use_alignment'	=> true,
-						'box_shadow'	=> array(
+						'use_alignment' => true,
+						'box_shadow' => array(
 							'css' => array(
 								'main' => '%%order_class%% .et_pb_button',
 							),
 						),
 					),
 				),
-				'background'		=> array(
+				'background' => array(
 					'css' => array(
-						'main'		=> "{$this->main_css_element}, {$this->main_css_element}.et_pb_bg_layout_dark",
+						'main' => "{$this->main_css_element}, {$this->main_css_element}.et_pb_bg_layout_dark",
 					),
 					'options' => array(
-						'parallax_method'	=> array(
-							'default'		=> 'off',
+						'parallax_method' => array(
+							'default' => 'off',
 						),
-						'background_color'	=> array(
-							'default'		=> '',
+						'background_color' => array(
+							'default' => '',
 						),
 					),
 				),
-				'borders'			=> array(
+				'borders' => array(
 					'default' => array(
-						'css'		=> array(
-							'main'		=> array(
-								'border_radii'	=> "{$this->main_css_element} .et_pb_hm_carousel_item",
-								'border_styles'	=> "{$this->main_css_element} .et_pb_hm_carousel_item",
+						'css' => array(
+							'main' => array(
+								'border_radii' => "{$this->main_css_element} .et_pb_hm_carousel_item",
+								'border_styles' => "{$this->main_css_element} .et_pb_hm_carousel_item",
 							),
 						),
-						'defaults'	=> array(
-							'border_radii'	=> array(),
-							'border_styles'	=> array(
+						'defaults' => array(
+							'border_radii' => array(),
+							'border_styles' => array(
 								'width' => '0',
 								'color' => '',
 								'style' => 'solid',
@@ -138,14 +138,14 @@ if( ! class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
 						)
 					),
 				),
-				'margin_padding'	=> array(
+				'margin_padding' => array(
 					'css' => array(
-						'main'		=> '%%order_class%%',
-						'padding'	=> '%%order_class%% .et_pb_hm_post_carousel_description, .et_pb_hm_post_carousel_fullwidth_off%%order_class%% .et_pb_hm_post_carousel_description',
-						'important'	=> array( 'custom_margin' ), // 마지막 모듈 margin-bottom 스타일을 덮어 쓰는데 필요
+						'main' => '%%order_class%%',
+						'padding' => '%%order_class%% .et_pb_hm_post_carousel_description, .et_pb_hm_post_carousel_fullwidth_off%%order_class%% .et_pb_hm_post_carousel_description',
+						'important' => array( 'custom_margin' ), // 마지막 모듈 margin-bottom 스타일을 덮어 쓰는데 필요
 					),
 				),
-				'text'				=> array(
+				'text' => array(
 					'css' => array(
 						'main' => implode( ', ', array(
 							'%%order_class%% .et_pb_hm_post_carousel .et_pb_hm_post_carousel_description .et_pb_hm_post_carousel_title',
@@ -159,7 +159,7 @@ if( ! class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
 						'text_shadow'      => '%%order_class%% .et_pb_hm_post_carousel .et_pb_hm_post_carousel_description',
 					),
 					'options' => array(
-						'text_orientation'  => array(
+						'text_orientation' => array(
 							'default_on_front' => 'center',
 						),
 						'background_layout' => array(
@@ -169,7 +169,7 @@ if( ! class_exists('ET_Builder_Module_HM_Divi_Post_Carousel') ) {
 					),
 					'use_background_layout' => true,
 				),
-				'box_shadow'		=> array(
+				'box_shadow' => array(
 					'default' => array(
 						'css' => array(
 							'main' => "{$this->main_css_element} .et_pb_hm_carousel_item",
