@@ -1,13 +1,13 @@
 === Post Carousel for DV Builder  ===
 Contributors:       Hanamon
 Donate link:        -
-Tags: 				carousel, divi carousel, divi theme, divi plugins, post carousel for divi
-Requires at least: 	4.5
-Tested up to: 		5.6
-Stable tag: 		1.3
-Requires PHP:		5.6
+Tags:               carousel, divi carousel, divi theme, divi plugins, post carousel for divi
+Requires at least:  4.5
+Tested up to:       5.6
+Stable tag:         1.3
+Requires PHP:       5.6
 License:            GPLv2 or later
-License URI: 		http://www.gnu.org/licenses/gpl-2.0.html
+License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
 Post carousel for Divi builder with the support of custom post types and various carousel options.
 커스텀 포스트 유형 및 다양한 캐러셀 옵션을 지원하는 Divi 빌더용 포스트 캐러셀.
